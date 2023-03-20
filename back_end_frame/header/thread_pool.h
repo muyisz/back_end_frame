@@ -3,6 +3,7 @@
 #include<thread>
 #include <winsock2.h>
 #include"util.h"
+#include<iostream>
 #include"const.h"
 #if _WIN32
 
@@ -19,6 +20,7 @@ namespace muyi {
 	class threadPool {
 	public:
 		threadPool(int size);
+		threadPool();
 		~threadPool();
 		template<class... TYPES>
 		void Commit(void(*func)(TYPES... types), TYPES... types) {

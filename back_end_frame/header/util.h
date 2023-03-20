@@ -2,6 +2,9 @@
 #include<queue>
 #include<mutex>
 #include<vector>
+#include"const.h"
+#include"error.h"
+#include"mstring.h"
 
 namespace muyi {
 
@@ -24,6 +27,17 @@ namespace muyi {
 			std::unique_lock<std::mutex> lock(mMutex);
 			return mQueue.empty();
 		}
+
+		error* GetFront(TYPE& model) {
+			std::unique_lock<std::mutex> lock(mMutex);
+			if (mQueue.empty()) {
+				return error::NewError(GetNullQueue);
+			}
+			model = mQueue.front();
+			mQueue.pop();
+			return nullptr;
+		}
+
 		TYPE Front() {
 			std::unique_lock<std::mutex> lock(mMutex);
 			return mQueue.front();
@@ -48,4 +62,8 @@ namespace muyi {
 		std::vector<TYPE>mVector;
 		std::mutex mMutex;
 	};
+
+	
+	bool DrawHTTPMessage(mstring& HTTPMessage, mstring& messageBuffer, char* recvBuffer, int recvSize);
+
 }

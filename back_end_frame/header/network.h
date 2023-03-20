@@ -1,7 +1,7 @@
 #pragma once
 #include<queue>
 #include<mutex>
-#include"mstring.h"
+#include"thread_pool.h"
 
 #ifdef _WIN32
 
@@ -12,16 +12,19 @@
 
 
 namespace  muyi {
+	class muyiController;
 
 	class networkLink {
 	public:
-		networkLink(int port);
+		networkLink(int port, muyiController* controller);
 		void Init();
 		void Listen();
 	private:
 		int port;
 		SOCKET listenSOCKET;
+		muyiController* controller;
 	};
 
-	void conversation(SOCKET* conversionSock);
+	void conversation(SOCKET* conversionSock, muyiController* controller);
+	void getHTTPMessage(SOCKET* conversionSOCK, mutexQueue<mstring>* messageQueue, HANDLE* disconnectHANDLE, HANDLE* noticeMessage);
 }

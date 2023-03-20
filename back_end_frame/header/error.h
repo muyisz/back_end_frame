@@ -14,4 +14,11 @@ namespace muyi {
 	private:
 		std::string message;
 	};
+
+	template<class TYPE>
+	struct returnTable {
+		returnTable() :Err(nullptr) {}
+		TYPE Data;
+		muyi::error* Err;
+	};
 }

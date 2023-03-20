@@ -39,6 +39,9 @@
     <ClInclude Include="back_end_frame\header\thread_pool.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="back_end_frame\header\http.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="back_end_frame\source\muyi.cpp">
@@ -63,6 +66,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="back_end_frame\source\thread_pool.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="back_end_frame\source\http.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

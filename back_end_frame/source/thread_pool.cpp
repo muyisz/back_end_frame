@@ -1,10 +1,26 @@
 #include"../header/thread_pool.h"
 namespace muyi {
 	threadPool::threadPool(int size) :threadNumber(size) {
-		taskHandle = CreateEvent(NULL, TRUE, FALSE, TEXT("taskEvent"));;
-		threadHandle = CreateEvent(NULL, TRUE, FALSE, TEXT("threadEvent"));;
+		taskHandle = CreateEvent(NULL, TRUE, FALSE, TEXT("taskEvent"));
+		threadHandle = CreateEvent(NULL, TRUE, FALSE, TEXT("threadEvent"));
 
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < threadNumber; i++) {
+			threadNode node;
+			node.ID = i;
+			node.thread = new std::thread;
+			readyThreadQueue.Push(node);
+			threadList.push_back(node);
+		}
+
+		std::thread checkThread(&threadPool::check, this);
+		checkThread.detach();
+	}
+
+	threadPool::threadPool() :threadNumber(DefaultMaxThread) {
+		taskHandle = CreateEvent(NULL, TRUE, FALSE, TEXT("taskEvent"));
+		threadHandle = CreateEvent(NULL, TRUE, FALSE, TEXT("threadEvent"));
+
+		for (int i = 0; i < threadNumber; i++) {
 			threadNode node;
 			node.ID = i;
 			node.thread = new std::thread;

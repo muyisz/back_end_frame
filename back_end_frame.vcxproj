@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="back_end_frame\header\http.h" />
     <ClInclude Include="back_end_frame\header\thread_pool.h" />
     <ClInclude Include="back_end_frame\header\util.h" />
     <ClInclude Include="back_end_frame\header\const.h" />
@@ -149,6 +150,7 @@
     <ClInclude Include="back_end_frame\header\network.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="back_end_frame\source\http.cpp" />
     <ClCompile Include="back_end_frame\source\thread_pool.cpp" />
     <ClCompile Include="back_end_frame\source\util.cpp" />
     <ClCompile Include="back_end_frame\source\error.cpp" />
