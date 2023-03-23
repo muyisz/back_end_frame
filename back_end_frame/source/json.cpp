@@ -28,9 +28,7 @@ void toStruct(int& data, muyi::mstring json) {
 }
 
 void toStruct(std::string& data, muyi::mstring json) {
-	muyi::mstring sourceData= "\"";
-	sourceData = sourceData + json + "\"";
-	data = sourceData.GetSourceString();
+	data = json.Cut(1, json.size() - 1).Data.ToStdString().Data;
 }
 
 void toStruct(bool& data, muyi::mstring json) {
@@ -42,8 +40,7 @@ void toStruct(bool& data, muyi::mstring json) {
 }
 
 void toStruct(muyi::mstring& data, muyi::mstring json) {
-	data = "\"";
-	data = data + json + "\"";
+	data = json.Cut(1, json.size() - 1).Data;
 }
 
 muyi::mstring toJson(int data) {

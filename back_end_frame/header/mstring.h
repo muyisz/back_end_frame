@@ -1,5 +1,6 @@
 #pragma once
 #include<string>
+#include<stack>
 #include"error.h"
 namespace muyi {
 	class mstring {
@@ -20,6 +21,7 @@ namespace muyi {
 		mstring operator+(char* other);
 		mstring operator+(char other);
 		mstring operator+(const char* other);
+		unsigned int MatchParentheses(char leftBracket, char rightBrackets, int seat);
 		//The left side is a closed interval, and the right side is an open interval
 		returnTable<mstring> Cut(long long left, long long right);
 

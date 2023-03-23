@@ -16,6 +16,24 @@ namespace muyi {
 		}
 	}
 
+	unsigned int mstring::MatchParentheses(char leftBracket, char rightBrackets, int seat) {
+		int num = 1;
+		int matchSeat = std::string::npos;
+		for (int i = seat + 1; i < sourceString.size(); i++) {
+			if (sourceString[i] == leftBracket) {
+				num++;
+			}
+			if (sourceString[i] == rightBrackets) {
+				num--;
+			}
+			if (!num) {
+				matchSeat = i;
+				break;
+			}
+		}
+		return matchSeat;
+	}
+
 	unsigned int mstring::maxSize() {
 		return std::string::npos;
 	}
