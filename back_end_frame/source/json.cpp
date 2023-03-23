@@ -23,6 +23,29 @@ dataTypeInfo* dataTypeInfo::Instence() {
 	return dataTypeInfoInstance;
 }
 
+void toStruct(int& data, muyi::mstring json) {
+	data = atoi(json.c_str());
+}
+
+void toStruct(std::string& data, muyi::mstring json) {
+	muyi::mstring sourceData= "\"";
+	sourceData = sourceData + json + "\"";
+	data = sourceData.GetSourceString();
+}
+
+void toStruct(bool& data, muyi::mstring json) {
+	if (json == "true")
+		data = true;
+	else {
+		data = false;
+	}
+}
+
+void toStruct(muyi::mstring& data, muyi::mstring json) {
+	data = "\"";
+	data = data + json + "\"";
+}
+
 muyi::mstring toJson(int data) {
 	return muyi::mstring::FromInt(data);
 }
@@ -42,6 +65,13 @@ muyi::mstring toJson(std::string data) {
 
 bool isVector(muyi::mstring typeName) {
 	if (typeName.find(muyi::VectorTypePrefix) != muyi::mstring::maxSize()) {
+		return true;
+	}
+	return false;
+}
+
+bool isStruct(muyi::mstring typeName) {
+	if (typeName.find(muyi::StructTypePrefix) != muyi::mstring::maxSize()) {
 		return true;
 	}
 	return false;

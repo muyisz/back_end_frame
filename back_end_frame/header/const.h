@@ -43,4 +43,5 @@ namespace muyi {
 
 	//json
 	const std::string VectorTypePrefix = "class std::vector<";
+	const std::string StructTypePrefix = "struct";
 }

@@ -4,6 +4,7 @@
 #include<map>
 #include<vector>
 
+#include<iostream>
 
 enum DataType {
 	ObjectBase = 1,
@@ -23,11 +24,16 @@ private:
 	static dataTypeInfo* dataTypeInfoInstance;
 };
 
-
+void toStruct(std::string& data, muyi::mstring json);
+void toStruct(int& data, muyi::mstring json);
+void toStruct(bool& data, muyi::mstring json);
+void toStruct(muyi::mstring& data, muyi::mstring json);
 muyi::mstring toJson(int data);
 muyi::mstring toJson(std::string data);
 muyi::mstring toJson(muyi::mstring data);
 muyi::mstring toJson(bool data);
+bool isVector(muyi::mstring typeName);
+bool isStruct(muyi::mstring typeName);
 
 template<class TYPE>
 muyi::mstring toJson(std::vector<TYPE> data) {
@@ -40,7 +46,40 @@ muyi::mstring toJson(std::vector<TYPE> data) {
 	return json;
 }
 
-bool isVector(muyi::mstring typeName);
+template<class TYPE>
+void toStruct(std::vector<TYPE>& data, muyi::mstring json) {
+	std::cout << json.GetSourceString() << std::endl;
+	int lastSeat;
+	muyi::mstring childJson;
+	muyi::mstring interval;
+	int intervalSize = 0;
+	if (isStruct(typeid(TYPE).name())) {
+		interval = "},";
+		intervalSize = 1;
+	}
+	else if (isVector(typeid(TYPE).name())) {
+		interval = "],";
+		intervalSize = 1;
+	}
+	else {
+		interval = ",";
+	}
+
+	while (json.find(interval) != muyi::mstring::maxSize()) {
+		lastSeat = json.find(interval);
+		lastSeat += intervalSize;
+		TYPE element;
+		childJson = json.Cut(0, lastSeat).Data;
+		json = json.Cut(lastSeat + 1, json.size()).Data;
+		toStruct(element, childJson);
+		data.push_back(element);
+	}
+	lastSeat = json.find("]");
+	TYPE element;
+	childJson = json.Cut(0, lastSeat).Data;
+	toStruct(element, childJson);
+	data.push_back(element);
+}
 
 #define COUNT(...)  __count__(0, ##__VA_ARGS__, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
 #define __count__(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, N, ...) N
@@ -59,6 +98,22 @@ bool isVector(muyi::mstring typeName);
 #define MASHAL_ELEMENT(dataName)\
 	json = json + "\""+#dataName+"\":" + toJson(data.dataName) + "," \
 
+#define UNMASHAL_ELEMENT(dataName)\
+	std::cout<<#dataName<<" "<<json.GetSourceString()<<std::endl;\
+	firstSeat = json.find(muyi::mstring("\"") + #dataName + "\":");\
+	nameLength= (muyi::mstring("\"") + #dataName + "\":").size();\
+	if(isVector(typeid(object.dataName).name())){\
+		lastSeat=json.find(muyi::mstring("]"));lastSeat++;}\
+	else if (isStruct(typeid(object.dataName).name())){\
+		lastSeat=json.find(muyi::mstring("}"));lastSeat++;}\
+	else{\
+		lastSeat=json.find(muyi::mstring(","));\
+		if(lastSeat==muyi::mstring::maxSize())\
+			{lastSeat=json.find(muyi::mstring("}"));}}\
+	childJson = json.Cut(firstSeat+nameLength, lastSeat).Data;\
+	json=json.Cut(0,firstSeat).Data+json.Cut(lastSeat+1,json.size()).Data;\
+	toStruct(object.dataName, childJson);
+
 #define MACRO_CAT(a,b) __macro_cat__(a,b)
 #define __macro_cat__(a,b)  a##b
 
@@ -75,4 +130,11 @@ bool isVector(muyi::mstring typeName);
 		if (dataTypeInfo::Instence()->GetDataType(typeid(data).name()) != ObjectBase)\
 			json = json + "}";\
 		return json;\
+	}\
+	void toStruct(type& object, muyi::mstring json) {\
+		int firstSeat;\
+		int lastSeat;\
+		int nameLength;\
+		muyi::mstring childJson;\
+		FOR_EACH(UNMASHAL_ELEMENT,__VA_ARGS__)\
 	}

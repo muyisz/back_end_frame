@@ -31,38 +31,40 @@ int main() {
 */
 
 
-struct a1 {
+struct yz {
 	int a;
-	string b;
+	bool zfy;
 };
 
-REGESTER(a1,a,b)
+REGESTER(yz, a,zfy)
 
-struct a2 {
-	std::vector<a1>a;
-	a1 xyy;
+struct wrk {
+	int a;
+	std::vector<yz> xyy;
+	bool c;
 };
 
-REGESTER(a2,a,xyy)
-
-
+REGESTER(wrk, a, xyy, c);
 
 int main() {
-	a1 qq;
-	qq.a = 1;
-	qq.b = "123123";
+	wrk sb;
+	sb.a = 1;
+	sb.c = true;
 
-	a1 ww;
-	ww.a = 2;
-	ww.b = "qweqwe";
+	yz a1;
+	a1.a = 1;
+	a1.zfy = true;
+	sb.xyy.push_back(a1);
+	yz a2;
+	a2.a = 2;
+	a2.zfy = true;
+	sb.xyy.push_back(a2);
 
-	a2 sb;
-	sb.a.push_back(qq);
-	sb.a.push_back(ww);
-	sb.xyy.a = 3;
-	sb.xyy.b = "asdasd";
-	
 	std::cout << toJson(sb).GetSourceString() << std::endl;
+
+	wrk w;
+
+	toStruct(w, toJson(sb));
 
 	return 0;
 }
