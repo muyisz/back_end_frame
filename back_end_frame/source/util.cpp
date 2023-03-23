@@ -13,7 +13,7 @@ namespace muyi {
 		unsigned int HTTPBodySeat = messageBuffer.find(HTTPBeginBody);
 
 		if (HTTPBodySeat != messageBuffer.maxSize()) {
-			auto HTTPMessageData = messageBuffer.Cut(0, HTTPBodySeat + 5 * CharSize);
+			auto HTTPMessageData = messageBuffer.Cut(0, HTTPBodySeat + 4 * CharSize);
 			if (HTTPMessageData.Err != nullptr) {
 				//todo ¥Ú”°»’÷æ
 				delete HTTPMessageData.Err;
@@ -53,7 +53,7 @@ namespace muyi {
 
 			char* HTTPBody = new char[dataLength + 1];
 			HTTPBody[dataLength] = StringTail;
-			memcpy(HTTPBody, messageBuffer.c_str() + HTTPBodySeat + 5 * CharSize, dataLength);
+			memcpy(HTTPBody, messageBuffer.c_str() + HTTPBodySeat + 4 * CharSize, dataLength);
 			HTTPMessage = HTTPMessage + HTTPBody;
 			delete[]HTTPBody;
 		}

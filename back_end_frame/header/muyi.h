@@ -4,6 +4,8 @@
 #include<iostream>
 
 namespace muyi {
+	class context;
+
 	class muyiController {
 	public:
 		muyiController(int port);
@@ -26,7 +28,7 @@ namespace muyi {
 
 	class context {
 	public:
-		context(std::map<mstring, mstring>* reqHeader, mstring data, mstring version, muyiController* controller);
+		context(std::map<mstring, mstring>* reqHeader,mstring url, mstring data, mstring version, muyiController* controller);
 		~context();
 
 		mstring GetCookie();

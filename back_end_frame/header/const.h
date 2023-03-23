@@ -40,4 +40,7 @@ namespace muyi {
 	//thread_pool
 	const int TaskWaitMaxTime = 5 * 1000;
 	const int DefaultMaxThread = 20;
+
+	//json
+	const std::string VectorTypePrefix = "class std::vector<";
 }

@@ -4,6 +4,22 @@
 namespace muyi {
 	mstring::mstring() {}
 
+	mstring mstring::FromInt(int data) {
+		return std::to_string(data);
+	}
+	mstring mstring::FromBool(bool data) {
+		if (data) {
+			return "true";
+		}
+		else {
+			return "false";
+		}
+	}
+
+	unsigned int mstring::maxSize() {
+		return std::string::npos;
+	}
+
 	mstring::mstring(int data) {
 		sourceString = std::to_string(data);
 	}
@@ -65,7 +81,7 @@ namespace muyi {
 		return data;
 	}
 
-	mstring mstring::operator+(mstring& other) {
+	mstring mstring::operator+(mstring other) {
 		return mstring(sourceString + other.sourceString);
 	}
 
@@ -74,6 +90,10 @@ namespace muyi {
 	}
 
 	mstring mstring::operator+(char* other) {
+		return mstring(sourceString + other);
+	}
+
+	mstring mstring::operator+(const char* other) {
 		return mstring(sourceString + other);
 	}
 
@@ -137,10 +157,6 @@ namespace muyi {
 		return sourceString.find(data);
 	}
 
-	unsigned int mstring::maxSize() {
-		return std::string::npos;
-	}
-
 	char mstring::operator[](int seat) const {
 		return sourceString[seat];
 	}
@@ -166,7 +182,7 @@ namespace muyi {
 		return returnData;
 	}
 
-	std::string mstring::GetSourceString() {
+	std::string& mstring::GetSourceString() {
 		return sourceString;
 	}
 

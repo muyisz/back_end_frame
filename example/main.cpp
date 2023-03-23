@@ -1,6 +1,9 @@
 #include<queue>
 #include<iostream>
+#include<vector>
 #include"../back_end_frame/header/muyi.h"
+#include"../back_end_frame/header/json.h"
+#include"../back_end_frame/header/mstring.h"
 using namespace std;
 
 /*
@@ -27,10 +30,41 @@ int main() {
 }
 */
 
+
+struct a1 {
+	int a;
+	string b;
+};
+
+REGESTER(a1,a,b)
+
+struct a2 {
+	std::vector<a1>a;
+	a1 xyy;
+};
+
+REGESTER(a2,a,xyy)
+
+
+
 int main() {
-	muyi::muyiController a;
-	a.Init();
-	a.Run();
+	a1 qq;
+	qq.a = 1;
+	qq.b = "123123";
+
+	a1 ww;
+	ww.a = 2;
+	ww.b = "qweqwe";
+
+	a2 sb;
+	sb.a.push_back(qq);
+	sb.a.push_back(ww);
+	sb.xyy.a = 3;
+	sb.xyy.b = "asdasd";
+	
+	std::cout << toJson(sb).GetSourceString() << std::endl;
+
+	return 0;
 }
 
 

@@ -4,6 +4,9 @@
 namespace muyi {
 	class mstring {
 	public:
+		static mstring FromInt(int data);
+		static mstring FromBool(bool data);
+		static unsigned int maxSize();
 		mstring();
 		mstring(int data);
 		mstring(double data);
@@ -13,10 +16,10 @@ namespace muyi {
 		returnTable<int> ToInt();
 		returnTable<double> ToDouble();
 		returnTable<std::string>ToStdString();
-		mstring operator+(mstring& other);
+		mstring operator+(mstring other);
 		mstring operator+(char* other);
 		mstring operator+(char other);
-
+		mstring operator+(const char* other);
 		//The left side is a closed interval, and the right side is an open interval
 		returnTable<mstring> Cut(long long left, long long right);
 
@@ -38,8 +41,7 @@ namespace muyi {
 		unsigned int find(const char* data);
 		unsigned int find(std::string data);
 		unsigned int find(char data);
-		unsigned int maxSize();
-		std::string GetSourceString();
+		std::string& GetSourceString();
 
 	private:
 		std::string sourceString;

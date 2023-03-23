@@ -51,7 +51,6 @@ namespace muyi {
 	}
 
 	returnTable<analysisHTTPData> http::AnalysisHTTP(mstring sourceHTTP) {
-		std::cout << sourceHTTP.GetSourceString() << std::endl;
 
 		returnTable<analysisHTTPData> analysisData;
 		analysisData.Data.Header = new std::map<mstring, mstring>;
@@ -124,14 +123,16 @@ namespace muyi {
 	returnTable<mstring> HandleHTTP(mstring HTTPMessage, muyiController* controller) {
 		returnTable<mstring> returnData;
 
+		std::cout << HTTPMessage.GetSourceString() << std::endl;
+
 		returnTable<analysisHTTPData> HTTPData = HTTP.AnalysisHTTP(HTTPMessage);
 		if (HTTPData.Err != nullptr) {
 			//todo ´òÓ¡ÈÕÖ¾
 			returnData.Err = HTTPData.Err;
 			return returnData;
 		}
-		
-		context sourceContext(HTTPData.Data.Header, HTTPData.Data.Data, HTTPData.Data.Version);
+
+		context sourceContext(HTTPData.Data.Header, HTTPData.Data.Url, HTTPData.Data.Data, HTTPData.Data.Version, controller);
 
 		controller->DoRouter(HTTPData.Data.Method, HTTPData.Data.Url, &sourceContext);
 
