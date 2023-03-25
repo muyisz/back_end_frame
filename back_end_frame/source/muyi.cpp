@@ -11,6 +11,19 @@ namespace muyi {
 		delete resHeader;
 	}
 
+	void context::HTML(int httpState, mstring fileUrl) {
+		stateCode = httpState;
+		(*resHeader)[HTTPContentType] = ContentTypeHTML;
+		returnTable<mstring> httpFileData = GetFile(controller->GetHTMLGlob() + fileUrl);
+		if (httpFileData.Err != nullptr) {
+			//todo¥Ú”°»’÷æ
+			delete httpFileData.Err;
+		}
+
+		(*resHeader)[HTTPContentLength] = mstring::FromInt(httpFileData.Data.size());
+		resData = httpFileData.Data;
+	}
+
 	mstring context::GetCookie() {
 		return "";
 	}
@@ -44,9 +57,11 @@ namespace muyi {
 		return reqHeader;
 	}
 
-	muyiController::muyiController(int port) : networker(port, this) {}
+	muyiController::muyiController(int port) : networker(port, this) {
+	}
 
-	muyiController::muyiController() : networker(DefaultPort, this) {}
+	muyiController::muyiController() : networker(DefaultPort, this) {
+	}
 
 	void muyiController::GET(mstring url, void(*handlerFunc)(context*)) {
 		getFuncMap[url] = handlerFunc;
@@ -57,7 +72,7 @@ namespace muyi {
 	}
 
 	mstring muyiController::GetHTMLGlob() {
-		return "";
+		return htmlGlob;
 	}
 
 	void muyiController::Init() {
@@ -65,11 +80,11 @@ namespace muyi {
 	}
 
 	void muyiController::SetHTMLGlob(mstring url) {
-
+		htmlGlob = htmlGlob + url;
 	}
 
 	void muyiController::Static(mstring url) {
-
+		staticGlob = staticGlob + url;
 	}
 
 	error* muyiController::DoRouter(mstring method, mstring url, context* data) {

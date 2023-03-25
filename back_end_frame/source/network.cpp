@@ -39,13 +39,17 @@ namespace muyi {
 			//todo 打印日志
 			return;
 		}
-		HANDLE disconnectHANDLE = CreateEvent(NULL, TRUE, FALSE, TEXT("disconnectHANDLE"));
+		bool disconnect = false;
 		HANDLE noticeMessage = CreateEvent(NULL, TRUE, FALSE, TEXT("noticeMessage"));
 		mutexQueue<mstring> messageQueue;
-		threadpool.Commit(getHTTPMessage, conversionSock, &messageQueue, &disconnectHANDLE, &noticeMessage);
+		threadpool.Commit(getHTTPMessage, conversionSock, &messageQueue, &disconnect, &noticeMessage);
 		int sendSize;
 		int tryNumber;
 		while (true) {
+			if (disconnect) {
+				//todo 打印日志
+				break;
+			}
 			mstring message;
 			error* err = messageQueue.GetFront(message);
 			if (err != nullptr) {
@@ -67,16 +71,11 @@ namespace muyi {
 				sendSize = send(*conversionSock, resData.Data.c_str(), resData.Data.size(), 0);
 			}
 
-			if (disconnectHANDLE) {
-				//todo 打印日志
-				break;
-			}
 		}
-
 		delete conversionSock;
 	}
 
-	void getHTTPMessage(SOCKET* conversionSOCK, mutexQueue<mstring>* messageQueue, HANDLE* disconnectHANDLE, HANDLE* noticeMessage) {
+	void getHTTPMessage(SOCKET* conversionSOCK, mutexQueue<mstring>* messageQueue, bool* disconnect, HANDLE* noticeMessage) {
 		char* recvBuffer = new char[MaxBufferSize];
 		int gotMessageSize = 0;
 		mstring HTTPMessage = "";
@@ -84,13 +83,16 @@ namespace muyi {
 
 		while (true) {
 			gotMessageSize = recv(*conversionSOCK, recvBuffer, MaxBufferSize, 0);
-			if (gotMessageSize == 0 || gotMessageSize == -1) {
+			if (gotMessageSize == -1) {
 				//todo 打印日志
-				SetEvent(*disconnectHANDLE);
+				// 
+				//Wake up the thread waiting for the message
+				PulseEvent(*noticeMessage);
+				(*disconnect) = true;
 				break;
 			}
 			
-			if (DrawHTTPMessage(HTTPMessage, messageBuffer, recvBuffer,gotMessageSize)) {
+			while (DrawHTTPMessage(HTTPMessage, messageBuffer, recvBuffer,gotMessageSize)) {
 				messageQueue->Push(HTTPMessage);
 				PulseEvent(*noticeMessage);
 			}

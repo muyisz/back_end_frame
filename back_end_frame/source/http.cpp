@@ -114,16 +114,25 @@ namespace muyi {
 		return analysisData;
 	}
 
-	returnTable<mstring> http::CreateHTTP(mstring version, int stateCode, mstring sentence, std::map<mstring, mstring>* header, mstring data) {
-		returnTable<mstring> HTTPdata;
+	void http::addHttpHeader(mstring& httpMessage, std::map<mstring, mstring>* header) {
+		for (auto item = (*header).begin(); item != (*header).end(); item++) {
+			httpMessage = httpMessage + (*item).first + HeaderInterval + (*item).second + Crlf;
+		}
+	}
 
-		return HTTPdata;
+	returnTable<mstring> http::CreateHTTP(mstring version, int stateCode, mstring sentence, std::map<mstring, mstring>* header, mstring data) {
+		returnTable<mstring> HTTPData;
+		HTTPData.Data = "";
+		HTTPData.Data = HTTPData.Data + version + " " + mstring::FromInt(stateCode) + " " + sentence + Crlf;
+
+		addHttpHeader(HTTPData.Data, header);
+
+		HTTPData.Data = HTTPData.Data + Crlf + data;
+		return HTTPData;
 	}
 
 	returnTable<mstring> HandleHTTP(mstring HTTPMessage, muyiController* controller) {
 		returnTable<mstring> returnData;
-
-		std::cout << HTTPMessage.GetSourceString() << std::endl;
 
 		returnTable<analysisHTTPData> HTTPData = HTTP.AnalysisHTTP(HTTPMessage);
 		if (HTTPData.Err != nullptr) {
@@ -134,7 +143,11 @@ namespace muyi {
 
 		context sourceContext(HTTPData.Data.Header, HTTPData.Data.Url, HTTPData.Data.Data, HTTPData.Data.Version, controller);
 
-		controller->DoRouter(HTTPData.Data.Method, HTTPData.Data.Url, &sourceContext);
+		auto err = controller->DoRouter(HTTPData.Data.Method, HTTPData.Data.Url, &sourceContext);
+		if (err != nullptr) {
+			returnData.Data = NotFindMessage;
+			return returnData;
+		}
 
 		returnTable<mstring> sentenceData = HTTP.GetSentenceByCode(sourceContext.GetStateCode());
 		if (sentenceData.Err != nullptr) {

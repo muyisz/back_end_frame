@@ -12,7 +12,7 @@ namespace muyi {
 		mstring Data;
 		mstring Version;
 	};
-
+	//todoµ¥Àý
 	class http {
 	public:
 		http();
@@ -25,6 +25,7 @@ namespace muyi {
 			mstring value;
 		};
 
+		void addHttpHeader(mstring& httpMessage, std::map<mstring, mstring>* header);
 		returnTable<headerStruct> getFirstHeader(mstring& HTTPMessage);
 		std::map<int, mstring>CodeToSentence;
 	};

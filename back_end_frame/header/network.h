@@ -26,5 +26,5 @@ namespace  muyi {
 	};
 
 	void conversation(SOCKET* conversionSock, muyiController* controller);
-	void getHTTPMessage(SOCKET* conversionSOCK, mutexQueue<mstring>* messageQueue, HANDLE* disconnectHANDLE, HANDLE* noticeMessage);
+	void getHTTPMessage(SOCKET* conversionSOCK, mutexQueue<mstring>* messageQueue, bool* disconnect, HANDLE* noticeMessage);
 }

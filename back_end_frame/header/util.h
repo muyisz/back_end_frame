@@ -63,7 +63,7 @@ namespace muyi {
 		std::mutex mMutex;
 	};
 
-	
 	bool DrawHTTPMessage(mstring& HTTPMessage, mstring& messageBuffer, char* recvBuffer, int recvSize);
 
+	returnTable<mstring> GetFile(mstring url);
 }

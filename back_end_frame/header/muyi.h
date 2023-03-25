@@ -1,7 +1,8 @@
 #pragma once
 #include<map>
-#include"network.h"
 #include<iostream>
+#include"network.h"
+#include"json.h"
 
 namespace muyi {
 	class context;
@@ -33,13 +34,16 @@ namespace muyi {
 
 		mstring GetCookie();
 
+		void HTML(int httpState, mstring fileUrl);
 		template<class TYPE>
-		void HTML(int httpState, mstring fileUrl, TYPE data) {
+		void JSON(int httpState, TYPE& data) {
+			stateCode = httpState;
 
-		}
-		template<class TYPE>
-		void JSON(int httpState, TYPE data) {
+			(*resHeader)[HTTPContentType] = ContentTypeJSON;
+			mstring jsonData = toJson(data);
+			(*resHeader)[HTTPContentLength] = mstring::FromInt(jsonData.size());
 
+			resData = jsonData;
 		}
 
 		mstring GetHeader(mstring name);

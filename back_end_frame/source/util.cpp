@@ -1,16 +1,27 @@
 #include"../header/util.h"
 #include<iostream>
+#include <fstream>
 
 namespace muyi {
 	bool DrawHTTPMessage(mstring& HTTPMessage, mstring& messageBuffer, char* recvBuffer, int recvSize) {
+
+		std::cout << recvBuffer << std::endl;
+
 		HTTPMessage = "";
 		if (recvSize < MaxBufferSize) {
 			recvBuffer[recvSize] = StringTail;
 		}
+
 		messageBuffer = messageBuffer + recvBuffer;
+
+		memset(recvBuffer, 0, recvSize + 1);
 
 		unsigned int lengthSeat = messageBuffer.find(HTTPContentLength);
 		unsigned int HTTPBodySeat = messageBuffer.find(HTTPBeginBody);
+
+		if (HTTPBodySeat == mstring::maxSize()) {
+			return false;
+		}
 
 		if (HTTPBodySeat != messageBuffer.maxSize()) {
 			auto HTTPMessageData = messageBuffer.Cut(0, HTTPBodySeat + 4 * CharSize);
@@ -27,7 +38,7 @@ namespace muyi {
 			lengthSeat += ContentLengthLength;
 
 			for (int i = lengthSeat; i < messageBuffer.size(); i++) {
-				
+
 				if (messageBuffer[i] == crlf) {
 					auto sizeData = messageBuffer.Cut(lengthSeat, i);
 					if (sizeData.Err != nullptr) {
@@ -65,8 +76,27 @@ namespace muyi {
 			return false;
 		}
 
+		messageBuffer = messageBufferData.Data;
+
 		return true;
 	}
 
+	returnTable<mstring> GetFile(mstring url) {
+		returnTable<mstring> returnData;
+
+		std::ifstream file(url.GetSourceString(), std::ios::in | std::ios::binary);
+		if (!file) {
+			returnData.Err = error::NewError(OpenFileFailed);
+			return returnData;
+		}
+
+		file.seekg(0, std::ios::end);
+		returnData.Data.GetSourceString().resize(file.tellg());
+		file.seekg(0, std::ios::beg);
+		file.read(&returnData.Data.GetSourceString()[0], returnData.Data.size());
+		file.close();
+
+		return returnData;
+	}
 
 }

@@ -162,6 +162,9 @@
     <ClCompile Include="back_end_frame\source\network.cpp" />
     <ClCompile Include="example\main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="example\home.html" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
