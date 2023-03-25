@@ -74,5 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="example\home.html" />
+    <None Include="example\home.js" />
   </ItemGroup>
 </Project>

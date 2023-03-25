@@ -4,6 +4,7 @@
 
 namespace muyi {
 	class muyiController;
+	class context;
 
 	struct analysisHTTPData {
 		std::map<mstring, mstring>* Header;

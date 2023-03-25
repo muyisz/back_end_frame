@@ -65,6 +65,8 @@ namespace muyi {
 				delete resData.Err;
 			}
 
+			std::cout << resData.Data.GetSourceString() << std::endl;
+
 			//Multiple attempts
 			for (sendSize = 0, tryNumber = 0; tryNumber < 3 && (sendSize == 0 || sendSize == -1); tryNumber++) {
 				//todo 打印日志
@@ -83,7 +85,7 @@ namespace muyi {
 
 		while (true) {
 			gotMessageSize = recv(*conversionSOCK, recvBuffer, MaxBufferSize, 0);
-			if (gotMessageSize == -1) {
+			if (gotMessageSize == 0 || gotMessageSize == -1) {
 				//todo 打印日志
 				// 
 				//Wake up the thread waiting for the message

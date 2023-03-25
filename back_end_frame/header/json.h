@@ -57,17 +57,17 @@ void toStruct(std::vector<TYPE>& data, muyi::mstring json) {
 	char leftBracket = ' ';
 	char rightBracket;
 	if (isStruct(typeid(TYPE).name())) {
-		leftBracket = '{';
-		rightBracket = '}';
+		leftBracket = StructLeftBracket;
+		rightBracket = StructRightBracket;
 		intervalSize = 1;
 	}
 	else if (isVector(typeid(TYPE).name())) {
-		leftBracket = '[';
-		rightBracket = ']';
+		leftBracket = VectorLeftBracket;
+		rightBracket = VectorRightBracket;
 		intervalSize = 1;
 	}
 	else {
-		rightBracket = ',';
+		rightBracket = BaseRightBracket;
 	}
 	while (json.MatchParentheses(leftBracket,rightBracket,1) != muyi::mstring::maxSize()) {
 		lastSeat = json.MatchParentheses(leftBracket, rightBracket, 1);

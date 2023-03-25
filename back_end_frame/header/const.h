@@ -3,12 +3,22 @@
 
 namespace muyi {
 	//http
-	const int HttpStateOK = 200;
+	const int HTTPStateOK = 200;
+	const int HTTPStateNotFind = 404;
+
 	const int DefaultPort = 8080;
 	const std::string HTTPContentLength = "Content-Length";
 	const std::string HTTPContentType = "Content-Type";
+
+	const std::string ContentTypeJS = "application/x-javascript";
+	const std::string ContentTypeXML = "text/xml";
+	const std::string ContentTypeGIF = "image/gif";
+	const std::string ContentTypeJPEG = "image/jpeg";
+	const std::string ContentTypePNG = "image/png";
 	const std::string ContentTypeHTML = "text/html";
 	const std::string ContentTypeJSON = "application/json";
+
+	const char FileExtendedFix = '.';
 	const int ContentLengthLength = 16;
 	const int CharSize = 1;
 	const std::string HTTPMethodGet = "GET";
@@ -52,5 +62,9 @@ namespace muyi {
 	//json
 	const std::string VectorTypePrefix = "class std::vector<";
 	const std::string StructTypePrefix = "struct";
-
+	const char StructLeftBracket = '{';
+	const char StructRightBracket = '}';
+	const char VectorLeftBracket = '[';
+	const char VectorRightBracket = ']';
+	const char BaseRightBracket = ',';
 }

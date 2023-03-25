@@ -17,9 +17,11 @@ namespace muyi {
 		error* DoRouter(mstring method, mstring url, context* data);
 		void SetHTMLGlob(mstring url);
 		void Static(mstring url);
+		error* GetResource(context* c, mstring url);
 		mstring GetHTMLGlob();
 		void Run();
 	private:
+		std::map<mstring, mstring> ContentType;
 		mstring htmlGlob;
 		mstring staticGlob;
 		networkLink networker;
@@ -29,7 +31,7 @@ namespace muyi {
 
 	class context {
 	public:
-		context(std::map<mstring, mstring>* reqHeader,mstring url, mstring data, mstring version, muyiController* controller);
+		context(std::map<mstring, mstring>* reqHeader, mstring url, mstring data, mstring version, muyiController* controller);
 		~context();
 
 		mstring GetCookie();
@@ -48,6 +50,8 @@ namespace muyi {
 
 		mstring GetHeader(mstring name);
 		void SetHeader(mstring name, mstring value);
+		void SetStateCode(int code);
+		void SetData(mstring data);
 		mstring GetVsersion();
 		mstring GetResData();
 		int GetStateCode();

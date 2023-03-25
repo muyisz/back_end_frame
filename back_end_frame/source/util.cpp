@@ -5,8 +5,6 @@
 namespace muyi {
 	bool DrawHTTPMessage(mstring& HTTPMessage, mstring& messageBuffer, char* recvBuffer, int recvSize) {
 
-		std::cout << recvBuffer << std::endl;
-
 		HTTPMessage = "";
 		if (recvSize < MaxBufferSize) {
 			recvBuffer[recvSize] = StringTail;
@@ -98,5 +96,12 @@ namespace muyi {
 
 		return returnData;
 	}
-
+	mstring GetFileExtended(mstring url) {
+		auto ExtendedNameData = url.Cut(url.find(FileExtendedFix) + 1, url.size());
+		if (ExtendedNameData.Err != nullptr) {
+			//todo ´òÓ¡ÈÕÖ¾
+			delete ExtendedNameData.Err;
+		}
+		return ExtendedNameData.Data;
+	}
 }

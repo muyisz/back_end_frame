@@ -15,7 +15,9 @@ int main() {
 	muyi::muyiController r;
 	r.Init();
 	r.SetHTMLGlob("example/");
+	r.Static("example/");
 	r.GET("/home", GetHome);
+	r.GET("/", GetHome);
 
 	r.Run();
 	return 0;

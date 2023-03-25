@@ -28,13 +28,21 @@ namespace muyi {
 		return "";
 	}
 
+	void context::SetStateCode(int code) {
+		stateCode = code;
+	}
+
+	void context::SetData(mstring data) {
+		resData = data;
+	}
+
 	mstring context::GetHeader(mstring name) {
 		//todo
 		return (*reqHeader)[name];
 	}
 
 	void context::SetHeader(mstring name, mstring value) {
-		(*reqHeader)[name] = value;
+		(*resHeader)[name] = value;
 	}
 
 	mstring context::GetVsersion() {
@@ -58,9 +66,40 @@ namespace muyi {
 	}
 
 	muyiController::muyiController(int port) : networker(port, this) {
+		ContentType["js"] = ContentTypeJS;
+		ContentType["html"] = ContentTypeHTML;
+		ContentType["xml"] = ContentTypeXML;
+		ContentType["gif"] = ContentTypeGIF;
+		ContentType["jpg"] = ContentTypeJPEG;
+		ContentType["png"] = ContentTypePNG;
+		ContentType["jfif"] = ContentTypeJPEG;
 	}
 
 	muyiController::muyiController() : networker(DefaultPort, this) {
+		ContentType["js"] = ContentTypeJS;
+		ContentType["html"] = ContentTypeHTML;
+		ContentType["xml"] = ContentTypeXML;
+		ContentType["gif"] = ContentTypeGIF;
+		ContentType["jpg"] = ContentTypeJPEG;
+		ContentType["png"] = ContentTypePNG;
+		ContentType["jfif"] = ContentTypeJPEG;
+	}
+
+	error* muyiController::GetResource(context* c, mstring url) {
+
+		url = staticGlob + url;
+		auto FileData = GetFile(url);
+		if (FileData.Err != nullptr) {
+			//todo ´òÓ¡ÈÕÖ¾
+			c->SetStateCode(HTTPStateNotFind);
+			return FileData.Err;
+		}
+		c->SetData(FileData.Data);
+		c->SetStateCode(HTTPStateOK);
+		mstring ExtendedName = GetFileExtended(url);
+		c->SetHeader(HTTPContentType, ContentType[ExtendedName]);
+		c->SetHeader(HTTPContentLength, mstring::FromInt(FileData.Data.size()));
+		return nullptr;
 	}
 
 	void muyiController::GET(mstring url, void(*handlerFunc)(context*)) {
@@ -89,6 +128,9 @@ namespace muyi {
 
 	error* muyiController::DoRouter(mstring method, mstring url, context* data) {
 		if (!method.compare(HTTPMethodGet)) {
+			if (url.find(FileExtendedFix) != mstring::maxSize())
+				return GetResource(data, url);
+
 			if (getFuncMap.count(url)) {
 				getFuncMap[url](data);
 				return nullptr;

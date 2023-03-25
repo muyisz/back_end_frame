@@ -66,4 +66,5 @@ namespace muyi {
 	bool DrawHTTPMessage(mstring& HTTPMessage, mstring& messageBuffer, char* recvBuffer, int recvSize);
 
 	returnTable<mstring> GetFile(mstring url);
+	mstring GetFileExtended(mstring url);
 }
