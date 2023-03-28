@@ -72,4 +72,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="example\data\_.txt" />
+    <Text Include="example\handler\_.txt" />
+    <Text Include="example\router\_.txt" />
+    <Text Include="example\util\_.txt" />
+    <Text Include="example\view\html\_.txt" />
+    <Text Include="example\view\js\_.txt" />
+  </ItemGroup>
 </Project>

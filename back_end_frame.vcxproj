@@ -162,6 +162,14 @@
     <ClCompile Include="back_end_frame\source\network.cpp" />
     <ClCompile Include="example\main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="example\data\_.txt" />
+    <Text Include="example\handler\_.txt" />
+    <Text Include="example\router\_.txt" />
+    <Text Include="example\util\_.txt" />
+    <Text Include="example\view\html\_.txt" />
+    <Text Include="example\view\js\_.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
