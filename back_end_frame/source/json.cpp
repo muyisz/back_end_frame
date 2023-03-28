@@ -77,3 +77,25 @@ bool isStruct(muyi::mstring typeName) {
 void removeLastCommon(muyi::mstring& data) {
 	data.GetSourceString().pop_back();
 }
+
+void RemoveSpace(muyi::mstring& json) {
+	muyi::mstring newJson = "";
+	for (int i = 0; i < json.size(); i++) {
+		switch (json[i])
+		{
+		case ' ':
+			continue;
+		case '\r':
+			continue;
+		case '\n':
+			continue;
+		case '\"':
+			i = json.MatchParentheses('"', '"', i);
+			continue;
+		default:
+			newJson = newJson + json[i];
+		}
+	}
+
+	return;
+}

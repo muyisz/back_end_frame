@@ -72,8 +72,4 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="example\home.html" />
-    <None Include="example\home.js" />
-  </ItemGroup>
 </Project>

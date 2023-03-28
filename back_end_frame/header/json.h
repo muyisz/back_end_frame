@@ -12,6 +12,8 @@ enum DataType {
 	ObjectVector,
 };
 
+void RemoveSpace(muyi::mstring& json);
+
 void removeLastCommon(muyi::mstring& data);
 
 class dataTypeInfo {
