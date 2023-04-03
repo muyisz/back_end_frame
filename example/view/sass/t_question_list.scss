@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+.main {
+    width: 1200px;
+    margin: 60px auto;
+
+    .screen {
+        margin-bottom: 20px;
+        span {
+            line-height: 40px;
+            vertical-align: middle;
+        }
+        input,select {
+            margin-right: 20px;
+            padding-left: 10px;
+            width: 300px;
+            height: 40px;
+            outline: none;
+        }
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        td,
+        th {
+            width: 120px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #DBDBDB;
+        }
+
+        .lang {
+            width: 420px;
+        }
+
+        .operate {
+            button {
+                margin-right: 20px;
+                width: 80px;
+                height: 30px;
+                border: 1px solid #BBBBBB;
+                border-radius: 5px;
+                box-shadow: 2px 2px 5px #BBBBBB;
+                outline: none;
+                background-color: transparent;
+                cursor: pointer;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}

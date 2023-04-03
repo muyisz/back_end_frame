@@ -1,0 +1,61 @@
+.main {
+  width: 1200px;
+  margin: auto;
+}
+.main .title {
+  margin-top: 20px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+.main .exam_item .question {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  height: 60px;
+  line-height: 60px;
+  border: 1px solid #D3D3D3;
+}
+.main .exam_item .option {
+  margin-bottom: 20px;
+}
+.main .exam_item .option ol {
+  margin-left: 40px;
+  width: 240px;
+  list-style-type: upper-alpha;
+}
+.main .exam_item .option ol li {
+  padding-left: 15px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #D3D3D3;
+  border-bottom: none;
+}
+.main .exam_item .option ol li:last-child {
+  border-bottom: 1px solid #D3D3D3;
+}
+.main .exam_item .option textarea {
+  outline: none;
+  resize: none;
+}
+.main .exam_item .answer .answer_text {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  height: 60px;
+  line-height: 60px;
+}
+.main .exam_item .answer .answer_example textarea {
+  outline: none;
+  resize: none;
+}
+.main .back {
+  padding: 60px 0;
+  text-align: center;
+}
+.main .back button {
+  width: 100px;
+  height: 50px;
+  border: 1px solid #BBBBBB;
+  border-radius: 5px;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}/*# sourceMappingURL=t_exam_probe.css.map */

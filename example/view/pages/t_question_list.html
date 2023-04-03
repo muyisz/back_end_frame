@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../images/icon.jpg" rel="shortcut icon">
+    <title>在线评测系统</title>
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/t_question_list.css">
+</head>
+<body>
+    <header>
+        <div class="head_img">
+            <img src="../images/icon.jpg" alt="">
+        </div>
+        <nav class="nav">
+            <ul>
+                <a href="" class="active">
+                    <li><span class="iconfont icon-home"></span>题库</li>
+                </a>
+                <a href="">
+                    <li><span class="iconfont icon-xinfeng"></span>考试列表</li>
+                </a>
+                <a href="">
+                    <li><span class="iconfont icon-touxiang"></span>练习</li>
+                </a>
+            </ul>
+        </nav>
+    </header>
+    <div class="left_fixed">
+        <ul>
+            <li><a href="#"><span class="iconfont icon-tianjia"></span>添加题目</a></li>
+            <li><a href="#"><span class="iconfont icon-shebeizhuangtai"></span>在线状态</a></li>
+            <li><a href="#"><span class="iconfont icon-paixing"></span>排行榜</a></li>
+            <li class="action"><a href="#"><span class="iconfont icon-liebiao"></span>题目列表</a></li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="screen">
+            <span>筛选：</span>
+            <input type="text" name="" id="" placeholder="题目名称">
+            <select name="" id="">
+                <option value="" disabled selected>难度</option>
+                <option value="">L1</option>
+                <option value="">L2</option>
+                <option value="">L3</option>
+            </select>
+            <select name="" id="">
+                <option value="" disabled selected>类型</option>
+                <option value="">选择题</option>
+                <option value="">客观题</option>
+                <option value="">编程题</option>
+            </select>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>题目</th>
+                    <th>类型</th>
+                    <th>难度</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="lang">1+1</td>
+                    <td>客观题</td>
+                    <td>L0</td>
+                    <td class="operate lang">
+                        <button class="edit">编辑</button>
+                        <button class="del">删除</button>
+                        <button class="look">查看</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../js/s_choose_exam.js"></script>
+</body>
+</html>

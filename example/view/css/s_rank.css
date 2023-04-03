@@ -1,0 +1,29 @@
+.main {
+  width: 1200px;
+  margin: 60px auto;
+}
+.main table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.main table td,
+.main table th {
+  width: 250px;
+  height: 40px;
+  text-align: center;
+  border: 1px solid #DBDBDB;
+}
+.main table td:last-of-type,
+.main table th:last-of-type {
+  width: 200px;
+}
+.main table td button,
+.main table th button {
+  width: 80px;
+  height: 30px;
+  outline: none;
+  border: 1px solid #C6C6C6;
+  box-shadow: 2px 2px 5px #BBBBBB;
+  border-radius: 3px;
+  cursor: pointer;
+}/*# sourceMappingURL=s_rank.css.map */
