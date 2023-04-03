@@ -1,0 +1,130 @@
+.main {
+  margin: 20px auto;
+  width: 1200px;
+}
+.main > input {
+  margin-right: 8px;
+  margin-bottom: 20px;
+}
+.main .hand {
+  display: none;
+  margin-top: 30px;
+}
+.main .hand .exam_content .exam_item textarea {
+  display: block;
+  padding: 5px;
+  width: 100%;
+  height: 60px;
+  resize: vertical;
+  outline: none;
+  border-radius: 0;
+  border-color: #C6C6C6;
+}
+.main .hand .exam_content .exam_item .question {
+  margin: 20px;
+}
+.main .hand .exam_content .exam_item .answer {
+  margin: 20px;
+}
+.main .hand .addBtn {
+  margin-left: 20px;
+  width: 100px;
+  height: 30px;
+  background: transparent;
+  outline: none;
+  border: 1px solid #C6C6C6;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.main .hand .add {
+  display: none;
+}
+.main .hand .add .question_content {
+  margin: auto;
+  width: 450px;
+  height: 300px;
+  overflow: auto;
+}
+.main .hand .add .question_content table {
+  width: 450px;
+  text-align: center;
+  color: #111B29;
+  border-collapse: collapse;
+}
+.main .hand .add .question_content table tr {
+  height: 36px;
+}
+.main .hand .add .question_content table tr td {
+  height: 36px;
+  border: 1px solid #E3E3E3;
+}
+.main .hand .add .question_content table tr .question p {
+  width: 270px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.main .hand .add .question_content table tr .difficulty {
+  width: 80px;
+}
+.main .hand .add .question_content table tr .choose {
+  width: 100px;
+}
+.main .hand .add .question_content table tr .choose button {
+  width: 60px;
+  height: 24px;
+  outline: none;
+  border: 1px solid #C6C6C6;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.main .auto {
+  display: none;
+}
+.main .auto .auto_content {
+  display: flex;
+  margin-top: 30px;
+}
+.main .auto .auto_content .select {
+  margin-right: 80px;
+}
+.main .auto .auto_content .select select {
+  width: 200px;
+  height: 30px;
+  color: #3d3b3b;
+  border: 1px solid #C6C6C6;
+  border-radius: 5px;
+  outline: none;
+}
+.main .auto .auto_content .select select option {
+  height: 30px;
+}
+.main .auto .auto_content .checkbox {
+  display: flex;
+  flex-direction: column;
+}
+.main .auto .auto_content .checkbox label {
+  font-size: 14px;
+}
+.main .auto .auto_content .checkbox label input {
+  margin-right: 8px;
+  transform: translateY(1px);
+}
+.main .auto .auto_btn {
+  margin-top: 200px;
+}
+.main .auto .auto_btn button {
+  width: 80px;
+  height: 30px;
+  outline: none;
+  border: 1px solid #C6C6C6;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.main #hand:checked ~ .hand {
+  display: block;
+}
+.main #auto:checked ~ .auto {
+  display: block;
+}/*# sourceMappingURL=t_exam_add.css.map */

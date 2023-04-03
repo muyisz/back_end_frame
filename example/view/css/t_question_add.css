@@ -1,0 +1,110 @@
+.main {
+  width: 1200px;
+  margin: 80px auto;
+}
+.main .question_name,
+.main .question_content,
+.main .answer {
+  margin-bottom: 20px;
+}
+.main .question_name h4,
+.main .question_content h4,
+.main .answer h4 {
+  line-height: 40px;
+}
+.main .question_name input,
+.main .question_name textarea,
+.main .question_content input,
+.main .question_content textarea,
+.main .answer input,
+.main .answer textarea {
+  padding-left: 15px;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #BBBBBB;
+  outline: none;
+  overflow: auto;
+}
+.main .question_name input::placeholder,
+.main .question_name textarea::placeholder,
+.main .question_content input::placeholder,
+.main .question_content textarea::placeholder,
+.main .answer input::placeholder,
+.main .answer textarea::placeholder {
+  transform: translateY(2px);
+}
+.main .question_name textarea,
+.main .question_content textarea,
+.main .answer textarea {
+  height: 150px;
+  resize: none;
+}
+.main .question_select {
+  padding-bottom: 60px;
+}
+.main .question_select select {
+  margin-right: 76px;
+  padding-left: 15px;
+  width: 260px;
+  height: 40px;
+  outline: none;
+}
+.main .hidden {
+  display: none;
+}
+.main .program_question .example_input h4,
+.main .program_question .example_outcome h4,
+.main .program_question .data_input h4,
+.main .program_question .data_outcome h4 {
+  line-height: 40px;
+}
+.main .program_question .example_input textarea,
+.main .program_question .example_outcome textarea,
+.main .program_question .data_input textarea,
+.main .program_question .data_outcome textarea {
+  width: 600px;
+  height: 200px;
+}
+.main .choice_question {
+  margin-bottom: -50px;
+}
+.main .choice_question .option {
+  margin-bottom: 30px;
+}
+.main .choice_question .option ol {
+  margin-left: 40px;
+  width: 240px;
+  list-style-type: upper-alpha;
+}
+.main .choice_question .option ol li {
+  padding-left: 15px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #D3D3D3;
+  border-bottom: none;
+}
+.main .choice_question .option ol li:last-child {
+  border-bottom: 1px solid #D3D3D3;
+}
+.main .choice_question .option ol li input {
+  display: block;
+  width: 100%;
+  height: 38px;
+  border: none;
+  outline: none;
+  transform: translateY(-3px);
+}
+.main .create {
+  margin-top: 80px;
+  padding: 60px 0;
+}
+.main .create button {
+  width: 200px;
+  height: 50px;
+  border: 1px solid #BBBBBB;
+  border-radius: 5px;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}/*# sourceMappingURL=t_question_add.css.map */
