@@ -6,4 +6,5 @@ void InitRouter(muyi::muyiController& r) {
 	/////////////////////////////////////////////////////////////////////////////////////////
 	r.POST("/login", PostLogin);
 	r.POST("/regester", PostRegester);
+	r.POST("/subject/add", PostAddSubject);
 }

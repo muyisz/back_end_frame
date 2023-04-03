@@ -21,3 +21,29 @@ muyi::error* Regester(string id,string name, string password, int type) {
 	}
 	return nullptr;
 }
+
+muyi::error* AddSubject(string name, string content, string answer, int knowledgePoint, int type, vector<string> test, vector<vector<string>> data) {
+	auto err = dataBase::instence()->CreateSubject(name, content, answer, knowledgePoint, type);
+	if (err != nullptr) {
+		//todo ´òÓ¡ÈÕÖ¾
+		return err;
+	}
+	if (type == SubjectProgram) {
+		auto subjectIDData = dataBase::instence()->GetSubjectIdByNameAndContent(name, content);
+		if (subjectIDData.Err != nullptr) {
+			return subjectIDData.Err;
+		}
+		auto err = dataBase::instence()->CreateProgramTest(subjectIDData.Data, test[0], test[1]);
+		if (err != nullptr) {
+			return err;
+		}
+		for (int i = 0; i < data.size(); i++) {
+			auto err = dataBase::instence()->CreateProgramTest(subjectIDData.Data, data[i][0], data[i][1]);
+			if (err != nullptr) {
+				return err;
+			}
+		}
+	}
+
+	return nullptr;
+}

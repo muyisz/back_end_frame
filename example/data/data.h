@@ -8,10 +8,13 @@ public:
 	static dataBase* instence();
 	muyi::returnTable<user> GetUserByIDAndType(string id, int type);
 	muyi::error* CreateUser(string id,string name, string password, int type);
+	muyi::error* CreateSubject(string name,string content,string answer,int knowledgePoint,int type);
+	muyi::returnTable<int> GetSubjectIdByNameAndContent(string name, string content);
+	muyi::error* CreateProgramTest(int subjectID, string exampleIn, string exampleOut);
+	muyi::error* CreateProgramData(int subjectID, string dataIn, string dataOut);
 
-	muyi::returnTable<MYSQL_RES*>query(const char* fomat);
-
-	muyi::error* insert(const char* fomat);
+	muyi::returnTable<MYSQL_RES*>query(const char* format);
+	muyi::error* insert(const char* format);
 
 private:
 	dataBase();
