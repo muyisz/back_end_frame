@@ -1,0 +1,79 @@
+.main {
+  width: 1200px;
+  margin: 80px auto;
+}
+.main .question_item {
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px dotted black;
+}
+.main .question_name,
+.main .question_content,
+.main .answer {
+  margin-bottom: 20px;
+}
+.main .question_name h4,
+.main .question_content h4,
+.main .answer h4 {
+  line-height: 40px;
+}
+.main .question_name div,
+.main .question_content div,
+.main .answer div {
+  padding-left: 15px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #BBBBBB;
+}
+.main .question_content div {
+  height: 150px;
+  line-height: normal;
+}
+.main .answer div {
+  height: 100px;
+  line-height: normal;
+}
+.main .program_question .example_input h4,
+.main .program_question .example_outcome h4,
+.main .program_question .data_input h4,
+.main .program_question .data_outcome h4 {
+  line-height: 40px;
+}
+.main .program_question .example_input textarea,
+.main .program_question .example_outcome textarea,
+.main .program_question .data_input textarea,
+.main .program_question .data_outcome textarea {
+  width: 600px;
+  height: 200px;
+}
+.main .choice_question .option {
+  margin-bottom: 20px;
+}
+.main .choice_question .option ol {
+  margin-left: 40px;
+  width: 240px;
+  list-style-type: upper-alpha;
+}
+.main .choice_question .option ol li {
+  padding-left: 15px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #D3D3D3;
+  border-bottom: none;
+}
+.main .choice_question .option ol li:last-child {
+  border-bottom: 1px solid #D3D3D3;
+}
+.main .back {
+  padding: 60px 0;
+  text-align: center;
+}
+.main .back button {
+  width: 100px;
+  height: 50px;
+  border: 1px solid #BBBBBB;
+  border-radius: 5px;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}/*# sourceMappingURL=t_question_detailed.css.map */

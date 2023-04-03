@@ -1,0 +1,32 @@
+.main {
+  width: 1400px;
+  margin: 200px 400px;
+}
+.main table {
+  width: 1200px;
+  border-collapse: collapse;
+  color: #101010;
+}
+.main table td,
+.main table th {
+  height: 75px;
+  border: 1px solid #DBDBDB;
+  text-align: center;
+}
+.main table .operate {
+  width: 390px;
+}
+.main table .operate button {
+  margin-right: 20px;
+  width: 100px;
+  height: 50px;
+  border: 1px solid #BBBBBB;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #BBBBBB;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.main table .operate button:last-child {
+  margin-right: 0;
+}/*# sourceMappingURL=t_exam_list.css.map */

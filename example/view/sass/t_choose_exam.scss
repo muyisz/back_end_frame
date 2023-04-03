@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.main {
+    width: 1200px;
+    margin: 60px auto;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        td,
+        th {
+            width: 240px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #DBDBDB;
+
+            button {
+                width: 80px;
+                height: 30px;
+                outline: none;
+                border: 1px solid #C6C6C6;
+                box-shadow: 2px 2px 5px #BBBBBB;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+        }
+    }
+}

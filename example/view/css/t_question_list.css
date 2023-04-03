@@ -1,0 +1,46 @@
+.main {
+  width: 1200px;
+  margin: 60px auto;
+}
+.main .screen {
+  margin-bottom: 20px;
+}
+.main .screen span {
+  line-height: 40px;
+  vertical-align: middle;
+}
+.main .screen input, .main .screen select {
+  margin-right: 20px;
+  padding-left: 10px;
+  width: 300px;
+  height: 40px;
+  outline: none;
+}
+.main table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.main table td,
+.main table th {
+  width: 120px;
+  height: 40px;
+  text-align: center;
+  border: 1px solid #DBDBDB;
+}
+.main table .lang {
+  width: 420px;
+}
+.main table .operate button {
+  margin-right: 20px;
+  width: 80px;
+  height: 30px;
+  border: 1px solid #BBBBBB;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #BBBBBB;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.main table .operate button:last-child {
+  margin-right: 0;
+}/*# sourceMappingURL=t_question_list.css.map */

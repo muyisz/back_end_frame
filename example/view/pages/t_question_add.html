@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../images/icon.jpg" rel="shortcut icon">
+    <title>在线评测系统</title>
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/t_question_add.css">
+</head>
+
+<body>
+    <header>
+        <div class="head_img">
+            <img src="../images/icon.jpg" alt="">
+        </div>
+        <nav class="nav">
+            <ul>
+                <a href="" class="active">
+                    <li><span class="iconfont icon-home"></span>题库</li>
+                </a>
+                <a href="">
+                    <li><span class="iconfont icon-xinfeng"></span>考试列表</li>
+                </a>
+                <a href="">
+                    <li><span class="iconfont icon-touxiang"></span>练习</li>
+                </a>
+            </ul>
+        </nav>
+    </header>
+    <div class="left_fixed">
+        <ul>
+            <li class="action"><a href="#"><span class="iconfont icon-tianjia"></span>添加题目</a></li>
+            <li><a href="#"><span class="iconfont icon-shebeizhuangtai"></span>在线状态</a></li>
+            <li><a href="#"><span class="iconfont icon-paixing"></span>排行榜</a></li>
+            <li><a href="#"><span class="iconfont icon-liebiao"></span>题目列表</a></li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="question_name">
+            <h4>题目名称</h4>
+            <input type="text" class="name" placeholder="题目描述">
+        </div>
+        <div class="question_content">
+            <h4>题目内容</h4>
+            <textarea type="text" class="name" placeholder="题面..."></textarea>
+        </div>
+        <div class="question_select">
+            <select name="" id="question_type">
+                <option value="" selected disabled>题目类型</option>
+                <option value="1" class="pro_btn">编程题</option>
+                <option value="2" class="obj_btn">客观题</option>
+                <option value="3" class="cho_btn">选择题</option>
+            </select>
+            <select name="" id="">
+                <option value="" selected disabled>题目难度</option>
+                <option value="">L1</option>
+                <option value="">L2</option>
+                <option value="">L3</option>
+            </select>
+        </div>
+
+        <!-- 编程题 -->
+        <div class="program_question hidden">
+            <div class="example_input">
+                <h4>样例出入</h4>
+                <textarea name="" id="" cols="30" rows="10">-</textarea>
+            </div>
+            <div class="example_outcome">
+                <h4>样例输出</h4>
+                <textarea name="" id="" cols="30" rows="10">hello world</textarea>
+            </div>
+            <div class="data_input">
+                <h4>输入数据</h4>
+                <textarea name="" id="" cols="30" rows="10">-</textarea>
+            </div>
+            <div class="data_outcome">
+                <h4>输出数据</h4>
+                <textarea name="" id="" cols="30" rows="10">hello world</textarea>
+            </div>
+        </div>
+
+        <!-- 客观题 -->
+        <div class="objective_question hidden">
+            <div class="answer">
+                <h4>正确答案：</h4>
+                <textarea name="" id="" cols="30" rows="10" class="answer_content" placeholder="支持正则表达式..."></textarea>
+            </div>
+        </div>
+
+        <!-- 选择题 -->
+        <div class="choice_question hidden">
+            <div class="option">
+                <ol>
+                    <li class="A"><input type="text"></li>
+                    <li class="B"><input type="text"></li>
+                    <li class="C"><input type="text"></li>
+                    <li class="D"><input type="text"></li>
+                </ol>
+            </div>
+            <div class="answer">
+                正确答案：<input type="text">
+            </div>
+        </div>
+
+        <div class="create">
+            <button>创建</button>
+        </div>
+    </div>
+
+    <script src="../js/t_question_add.js"></script>
+</body>
+
+</html>

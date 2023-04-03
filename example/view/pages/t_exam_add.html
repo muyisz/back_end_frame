@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../images/icon.jpg" rel="shortcut icon">
+    <title>在线评测系统</title>
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/t_exam_add.css">
+</head>
+
+<body>
+    <header>
+        <div class="head_img">
+            <img src="../images/icon.jpg" alt="">
+        </div>
+        <nav class="nav">
+            <ul>
+                <a href="">
+                    <li><span class="iconfont icon-home"></span>题库</li>
+                </a>
+                <a href="" class="active">
+                    <li><span class="iconfont icon-xinfeng"></span>考试列表</li>
+                </a>
+                <a href="">
+                    <li><span class="iconfont icon-touxiang"></span>练习</li>
+                </a>
+            </ul>
+        </nav>
+    </header>
+    <div class="left_fixed">
+        <ul>
+            <li class="action"><a href="#"><span class="iconfont icon-tianjia"></span>添加考试</a></li>
+            <li><a href="#"><span class="iconfont icon-liebiao"></span>考试列表</a></li>
+        </ul>
+    </div>
+    <div class="main">
+        <!-- <form action="#" method="post"> -->
+        <input type="radio" name="create" id="hand" value="hand" checked><label for="hand">自行编辑</label>
+        <br>
+        <input type="radio" name="create" id="auto" value="auto"><label for="auto">自动生成</label>
+
+        <div class="hand">
+            <div class="exam_content">
+                <div class="exam_item">
+                    <div class="question">
+                        题目：<textarea name="question" id="" cols="30" rows="1">1+1=?</textarea>
+                    </div>
+                    <div class="answer">
+                        答案：<textarea name="answer" id="" cols="30" rows="1">2</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 不清楚这个按钮具体作用，暂时放在此位置 -->
+            <button class="addBtn">添加题目</button>
+
+            <div class="add">
+                <div class="question_content">
+                    <table>
+                        <tr>
+                            <td class="question">
+                                <p>输出hello word</p>
+                            </td>
+                            <td class="difficulty">L1</td>
+                            <td class="choose">
+                                <button>选择</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="question">
+                                <p>These words all mean to decide which thing or person you want out of the ones that are available.</p>
+                            </td>
+                            <td class="difficulty">L2</td>
+                            <td class="choose">
+                                <button>选择</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="question"></td>
+                            <td class="difficulty"></td>
+                            <td class="choose"></td>
+                        </tr>
+                        <tr>
+                            <td class="question"></td>
+                            <td class="difficulty"></td>
+                            <td class="choose"></td>
+                        </tr>
+                        <tr>
+                            <td class="question"></td>
+                            <td class="difficulty"></td>
+                            <td class="choose"></td>
+                        </tr>
+                        <tr>
+                            <td class="question"></td>
+                            <td class="difficulty"></td>
+                            <td class="choose"></td>
+                        </tr>
+                        <tr>
+                            <td class="question"></td>
+                            <td class="difficulty"></td>
+                            <td class="choose"></td>
+                        </tr>
+                        <tr>
+                            <td class="question"></td>
+                            <td class="difficulty"></td>
+                            <td class="choose"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="auto">
+            <div class="auto_content">
+                <div class="select">
+                    难度：
+                    <select name="difficulty" id="">
+                        <!-- <option value="" disabled selected>难度</option> -->
+                        <option value="L1">L1</option>
+                        <option value="L2">L2</option>
+                        <option value="L3">L3</option>
+                    </select>
+                </div>
+                <div class="checkbox">
+                    <label for="check1"><input type="checkbox" name="check1" id="check1">网络原理</label>
+                    <label for="check2"><input type="checkbox" name="check2" id="check2">操作系统</label>
+                    <label for="check3"><input type="checkbox" name="check3" id="check3">数据结构</label>
+                </div>
+            </div>
+            <div class="auto_btn">
+                <button>自动生成</button>
+            </div>
+        </div>
+        <!-- </form> -->
+    </div>
+
+
+    <script src="../js/t_exam_add.js"></script>
+</body>
+
+</html>

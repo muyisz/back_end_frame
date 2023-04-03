@@ -1,0 +1,25 @@
+.main {
+  width: 1200px;
+  margin: 60px auto;
+}
+.main table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.main table td,
+.main table th {
+  width: 240px;
+  height: 40px;
+  text-align: center;
+  border: 1px solid #DBDBDB;
+}
+.main table td button,
+.main table th button {
+  width: 80px;
+  height: 30px;
+  outline: none;
+  border: 1px solid #C6C6C6;
+  box-shadow: 2px 2px 5px #BBBBBB;
+  border-radius: 3px;
+  cursor: pointer;
+}/*# sourceMappingURL=t_choose_exam.css.map */
