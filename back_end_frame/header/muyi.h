@@ -54,6 +54,7 @@ namespace muyi {
 		void SetData(mstring data);
 		mstring GetVsersion();
 		mstring GetResData();
+		mstring GetReqData();
 		int GetStateCode();
 		std::map<mstring, mstring>* GetResHeader();
 		std::map<mstring, mstring>* GetReqHeader();

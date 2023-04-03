@@ -42,6 +42,36 @@
     <ClInclude Include="back_end_frame\header\http.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="example\router\router.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="example\config\config.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="example\data\data.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="example\data\model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="example\handler\body.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="example\handler\handler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="example\internal\internal.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="example\data\const.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="example\handler\const.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="example\internal\const.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="back_end_frame\source\muyi.cpp">
@@ -71,6 +101,18 @@
     <ClCompile Include="back_end_frame\source\http.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="example\router\router.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="example\data\data.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="example\handler\handler.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="example\internal\internal.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="example\data\_.txt" />
@@ -79,5 +121,8 @@
     <Text Include="example\util\_.txt" />
     <Text Include="example\view\html\_.txt" />
     <Text Include="example\view\js\_.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="example\config\table.sql" />
   </ItemGroup>
 </Project>

@@ -89,7 +89,7 @@ void RemoveSpace(muyi::mstring& json) {
 			continue;
 		case '\n':
 			continue;
-		case '\"':
+		case '"':
 			i = json.MatchParentheses('"', '"', i);
 			continue;
 		default:

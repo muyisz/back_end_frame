@@ -36,6 +36,10 @@ namespace muyi {
 		resData = data;
 	}
 
+	mstring context::GetReqData() {
+		return reqData;
+	}
+
 	mstring context::GetHeader(mstring name) {
 		//todo
 		return (*reqHeader)[name];
