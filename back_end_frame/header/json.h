@@ -59,17 +59,17 @@ void toStruct(std::vector<TYPE>& data, muyi::mstring json) {
 	char leftBracket = ' ';
 	char rightBracket;
 	if (isStruct(typeid(TYPE).name())) {
-		leftBracket = StructLeftBracket;
-		rightBracket = StructRightBracket;
+		leftBracket = muyi::StructLeftBracket;
+		rightBracket = muyi::StructRightBracket;
 		intervalSize = 1;
 	}
 	else if (isVector(typeid(TYPE).name())) {
-		leftBracket = VectorLeftBracket;
-		rightBracket = VectorRightBracket;
+		leftBracket = muyi::VectorLeftBracket;
+		rightBracket = muyi::VectorRightBracket;
 		intervalSize = 1;
 	}
 	else {
-		rightBracket = BaseRightBracket;
+		rightBracket = muyi::BaseRightBracket;
 	}
 	while (json.MatchParentheses(leftBracket,rightBracket,1) != muyi::mstring::maxSize()) {
 		lastSeat = json.MatchParentheses(leftBracket, rightBracket, 1);
@@ -108,6 +108,7 @@ void toStruct(std::vector<TYPE>& data, muyi::mstring json) {
 
 #define UNMASHAL_ELEMENT(dataName)\
 	firstSeat = json.find(muyi::mstring("\"") + #dataName + "\":");\
+	if(firstSeat!=muyi::mstring::maxSize()){\
 	nameLength= (muyi::mstring("\"") + #dataName + "\":").size();\
 	if(dataTypeInfo::Instence()->GetDataType(typeid(object.dataName).name()) == ObjectBase){\
 		lastSeat=json.find(muyi::mstring(","));\
@@ -119,8 +120,8 @@ void toStruct(std::vector<TYPE>& data, muyi::mstring json) {
 		lastSeat=json.MatchParentheses('{','}',firstSeat+nameLength);lastSeat++;}\
 	childJson = json.Cut(firstSeat+nameLength, lastSeat).Data;\
 	json=json.Cut(0,firstSeat).Data+json.Cut(lastSeat+1,json.size()).Data;\
-	toStruct(object.dataName, childJson);
-
+	toStruct(object.dataName, childJson);\
+	}
 #define MACRO_CAT(a,b) __macro_cat__(a,b)
 #define __macro_cat__(a,b)  a##b
 
