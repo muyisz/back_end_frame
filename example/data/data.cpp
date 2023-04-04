@@ -197,7 +197,7 @@ muyi::returnTable<subject>dataBase::GetSubjectByID(int id) {
 
 muyi::error* dataBase::CreateTestPaper(string subjectList, string creater, int facilityValue) {
 	char* sql = new char[10240];
-	sprintf(sql, CreateTestPaperFormat, subjectList, creater, facilityValue);
+	sprintf(sql, CreateTestPaperFormat, subjectList.c_str(), creater.c_str(), facilityValue);
 	return insert(sql);
 }
 

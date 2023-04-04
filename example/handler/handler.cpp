@@ -191,6 +191,7 @@ void GetTestPaperDetail(muyi::context* c) {
 				cell.test.in = testPaperData.Data.subjectList[i].test[0];
 				cell.test.out = testPaperData.Data.subjectList[i].test[1];
 			}
+			res.testPaperDetail.subjectList.push_back(cell);
 		}
 	}
 	c->JSON(HTTPStateOK, res);

@@ -77,7 +77,7 @@ struct GetSubjectDetailRes {
 REGESTER(GetSubjectDetailRes, code, message, subject)
 
 struct CreateTestPaperReq {
-	string subjectList;
+	vector<int> subjectList;
 	string creater;
 	int facilityValue;
 };

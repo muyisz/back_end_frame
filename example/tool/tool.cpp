@@ -11,5 +11,10 @@ vector<string>Spilt(string source, string interval) {
 		firstSeat = source.find(interval);
 		returnData.push_back(cell);
 	}
+	returnData.push_back(source);
 	return returnData;
+}
+
+string ToString(int data) {
+	return muyi::mstring::FromInt(data).GetSourceString();
 }

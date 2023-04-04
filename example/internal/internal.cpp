@@ -128,8 +128,10 @@ muyi::returnTable<InternalSubjectDetail> GetSubjectDetailInternal(int id) {
 	return returnData;
 }
 
-muyi::error* CreateTestPaper(string subjectList, string creater, int facilityValue) {
-	auto err = dataBase::instence()->CreateTestPaper(subjectList, creater, facilityValue);
+muyi::error* CreateTestPaper(vector<int> subjectList, string creater, int facilityValue) {
+	string subjectListString = Serialize(subjectList, ",");
+
+	auto err = dataBase::instence()->CreateTestPaper(subjectListString, creater, facilityValue);
 	if (err != nullptr) {
 		return err;
 	}
@@ -175,5 +177,5 @@ muyi::returnTable<InternalTestPaperDetail> TestPaperDetail(int id) {
 		}
 		returnData.Data.subjectList.push_back(cell);
 	}
-
+	return returnData;
 }

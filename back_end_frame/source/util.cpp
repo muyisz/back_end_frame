@@ -80,6 +80,8 @@ namespace muyi {
 	}
 
 	returnTable<mstring> GetFile(mstring url) {
+
+		std::cout << url.GetSourceString() << std::endl;
 		returnTable<mstring> returnData;
 
 		std::ifstream file(url.GetSourceString(), std::ios::in | std::ios::binary);

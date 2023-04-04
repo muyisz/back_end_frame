@@ -2,6 +2,8 @@
 #include"../handler/handler.h"
 
 void InitRouter(muyi::muyiController& r) {
+	r.Static("../view/");
+	r.SetHTMLGlob("../view/pages/");
 	r.GET("/", GetLogin);
 	r.GET("/subject/list", GetSubjectList);
 	r.GET("/subject/detail", GetSubjectDetail);
