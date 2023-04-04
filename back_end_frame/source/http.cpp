@@ -1,5 +1,6 @@
 #include"../header/http.h"
 #include"../header/muyi.h"
+#include"../header/json.h"
 
 namespace muyi {
 	http HTTP;
@@ -140,7 +141,8 @@ namespace muyi {
 			returnData.Err = HTTPData.Err;
 			return returnData;
 		}
-
+		//Remove spaces and line breaks in JSON
+		RemoveSpace(HTTPData.Data.Data);
 		context sourceContext(HTTPData.Data.Header, HTTPData.Data.Url, HTTPData.Data.Data, HTTPData.Data.Version, controller);
 
 		auto err = controller->DoRouter(HTTPData.Data.Method, HTTPData.Data.Url, &sourceContext);
