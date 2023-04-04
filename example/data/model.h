@@ -9,3 +9,26 @@ struct user {
 	string password;
 	string photo_url;
 };
+
+struct subject {
+	int id;
+	string name;
+	string content;
+	string answer;
+	int knowledgePoint;
+	int type;
+};
+
+struct programTest {
+	int id;
+	int subjectID;
+	string exampleIn;
+	string exampleOut;
+};
+
+struct programData {
+	int id;
+	int subjectID;
+	string dataIn;
+	string dataOut;
+};

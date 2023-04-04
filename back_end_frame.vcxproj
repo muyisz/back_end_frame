@@ -177,6 +177,7 @@
     <ClInclude Include="example\handler\body.h" />
     <ClInclude Include="example\handler\const.h" />
     <ClInclude Include="example\handler\handler.h" />
+    <ClInclude Include="example\internal\body.h" />
     <ClInclude Include="example\internal\const.h" />
     <ClInclude Include="example\internal\internal.h" />
     <ClInclude Include="example\router\router.h" />

@@ -33,3 +33,45 @@ struct SubjectReq {
 	vector<ProgramData> data;
 };
 REGESTER(SubjectReq, name, content, answer, knowledgePoint, type, test, data)
+
+struct SubjectListCell {
+	int id;
+	string name;
+	string content;
+	string answer;
+	int knowledgePoint;
+	int type;
+	ProgramData test;
+};
+REGESTER(SubjectListCell, id, name, content, answer, knowledgePoint, type, test);
+
+struct GetSubjectListRes {
+	int code;
+	string message;
+	vector<SubjectListCell> subjectList;
+};
+REGESTER(GetSubjectListRes, code, message, subjectList);
+
+struct GetDetailReq {
+	int id;
+};
+REGESTER(GetDetailReq,id)
+
+struct SubjectDetail {
+	int id;
+	string name;
+	string content;
+	string answer;
+	int knowledgePoint;
+	int type;
+	ProgramData test;
+	vector<ProgramData>data;
+};
+REGESTER(SubjectDetail, id, name, content, answer, knowledgePoint, type, test, data);
+
+struct GetSubjectDetailRes {
+	int code;
+	string message;
+	SubjectDetail subject;
+};
+REGESTER(GetSubjectDetailRes,code,message,subject)

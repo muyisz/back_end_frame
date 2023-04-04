@@ -142,7 +142,7 @@ namespace muyi {
 			return returnData;
 		}
 		//Remove spaces and line breaks in JSON
-		RemoveSpace(HTTPData.Data.Data);
+		//RemoveSpace(HTTPData.Data.Data);
 		context sourceContext(HTTPData.Data.Header, HTTPData.Data.Url, HTTPData.Data.Data, HTTPData.Data.Version, controller);
 
 		auto err = controller->DoRouter(HTTPData.Data.Method, HTTPData.Data.Url, &sourceContext);

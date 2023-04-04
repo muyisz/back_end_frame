@@ -37,9 +37,9 @@ create table `program_test`(
     example_out varchar(1000)
 )
 
-create table `program_data`{
+create table `program_data`(
     id int NOT NULL auto_increment PRIMARY KEY,
     subject_id int NOT NULL,
     data_in varchar(1000),
     data_out varchar(1000)
-}
+)

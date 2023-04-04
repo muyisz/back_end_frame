@@ -72,6 +72,9 @@
     <ClInclude Include="example\internal\const.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="example\internal\body.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="back_end_frame\source\muyi.cpp">

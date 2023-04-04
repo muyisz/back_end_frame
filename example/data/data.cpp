@@ -53,9 +53,9 @@ muyi::returnTable<user> dataBase::GetUserByIDAndType(string id, int type) {
 	return returnData;
 }
 
-muyi::error* dataBase::CreateUser(string id,string name, string password, int type) {
+muyi::error* dataBase::CreateUser(string id, string name, string password, int type) {
 	char* sql = new char[1024];
-	sprintf(sql, CreateUserFormat,id.c_str(), name.c_str(), type, password.c_str());
+	sprintf(sql, CreateUserFormat, id.c_str(), name.c_str(), type, password.c_str());
 
 	return insert(sql);
 }
@@ -100,6 +100,100 @@ muyi::error* dataBase::CreateProgramData(int subjectID, string dataIn, string da
 	return insert(sql);
 }
 
+muyi::returnTable<vector<subject>> dataBase::GetAllSubject() {
+	muyi::returnTable<vector<subject>> returnData;
+	auto resData = query(GetAllSubjectFormat);
+	if (resData.Err != nullptr) {
+		returnData.Err = resData.Err;
+		return returnData;
+	}
+	MYSQL_ROW column;
+	while (column = mysql_fetch_row(resData.Data)) {
+		subject cell;
+		cell.id = muyi::mstring(column[0]).ToInt().Data;
+		cell.name = column[1];
+		cell.content = column[2];
+		cell.answer = column[3];
+		cell.knowledgePoint = muyi::mstring(column[4]).ToInt().Data;
+		cell.type = muyi::mstring(column[5]).ToInt().Data;
+		returnData.Data.push_back(cell);
+	}
+	return returnData;
+}
+
+muyi::returnTable<programTest> dataBase::GetProgramTest(int id) {
+	muyi::returnTable<programTest> returnData;
+	char* sql = new char[1024];
+	sprintf(sql, GetProgramTestFormat, id);
+	auto resData = query(sql);
+	delete[]sql;
+
+	if (resData.Err != nullptr) {
+		returnData.Err = resData.Err;
+		return returnData;
+	}
+	MYSQL_ROW column = mysql_fetch_row(resData.Data);
+	if (column == nullptr) {
+		returnData.Err = muyi::error::NewError(CanNotFind);
+		return returnData;
+	}
+	returnData.Data.id = muyi::mstring(column[0]).ToInt().Data;
+	returnData.Data.subjectID = id;
+	returnData.Data.exampleIn = column[2];
+	returnData.Data.exampleOut = column[3];
+
+	return returnData;
+}
+
+muyi::returnTable<vector<programData>> dataBase::GetProgramData(int id) {
+	muyi::returnTable<vector<programData>> returnData;
+	char* sql = new char[1024];
+	sprintf(sql, GetProgramDataFormat, id);
+	auto resData = query(sql);
+	delete[]sql;
+
+	if (resData.Err != nullptr) {
+		returnData.Err = resData.Err;
+		return returnData;
+	}
+
+	MYSQL_ROW column;
+	while (column = mysql_fetch_row(resData.Data)) {
+		programData cell;
+		cell.id = muyi::mstring(column[0]).ToInt().Data;
+		cell.subjectID = id;
+		cell.dataIn = column[2];
+		cell.dataOut = column[3];
+		returnData.Data.push_back(cell);
+	}
+	return returnData;
+}
+
+muyi::returnTable<subject>dataBase::GetSubjectByID(int id) {
+	muyi::returnTable<subject> returnData;
+	char* sql = new char[1024];
+	sprintf(sql, GetSubjectByIDFormat, id);
+	auto resData = query(sql);
+	delete[]sql;
+
+	if (resData.Err != nullptr) {
+		returnData.Err = resData.Err;
+		return returnData;
+	}
+	MYSQL_ROW column = mysql_fetch_row(resData.Data);
+	if (column == nullptr) {
+		returnData.Err = muyi::error::NewError(CanNotFind);
+		return returnData;
+	}
+
+	returnData.Data.id = muyi::mstring(column[0]).ToInt().Data;
+	returnData.Data.name = column[1];
+	returnData.Data.content = column[2];
+	returnData.Data.answer = column[3];
+	returnData.Data.knowledgePoint = muyi::mstring(column[4]).ToInt().Data;
+	returnData.Data.type = muyi::mstring(column[5]).ToInt().Data;
+	return returnData;
+}
 
 muyi::returnTable<MYSQL_RES*>dataBase::query(const char* format) {
 	muyi::returnTable<MYSQL_RES*> returnData;
@@ -107,7 +201,7 @@ muyi::returnTable<MYSQL_RES*>dataBase::query(const char* format) {
 	MYSQL_RES* res;
 	if (!mysql_query(DB, format)) {
 		res = mysql_store_result(DB);
-		if (res!=nullptr) {
+		if (res != nullptr) {
 			returnData.Data = res;
 		}
 		else {

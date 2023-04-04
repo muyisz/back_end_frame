@@ -65,8 +65,6 @@ namespace muyi {
 				delete resData.Err;
 			}
 
-			std::cout << resData.Data.GetSourceString() << std::endl;
-
 			//Multiple attempts
 			for (sendSize = 0, tryNumber = 0; tryNumber < 3 && (sendSize == 0 || sendSize == -1); tryNumber++) {
 				//todo ´òÓ¡ÈÕÖ¾
