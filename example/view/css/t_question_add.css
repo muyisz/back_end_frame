@@ -65,6 +65,8 @@
 .main .program_question .data_outcome textarea {
   width: 600px;
   height: 200px;
+  resize: none;
+  outline: none;
 }
 .main .choice_question {
   margin-bottom: -50px;
@@ -83,6 +85,7 @@
   line-height: 40px;
   border: 1px solid #D3D3D3;
   border-bottom: none;
+  background-color: #FFFFFF;
 }
 .main .choice_question .option ol li:last-child {
   border-bottom: 1px solid #D3D3D3;

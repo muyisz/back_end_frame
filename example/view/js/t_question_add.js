@@ -2,20 +2,19 @@ let pro = document.querySelector(".program_question");
 let obj = document.querySelector(".objective_question");
 let cho = document.querySelector(".choice_question");
 
+// 创建按钮
+let creBtn = document.querySelector(".creBtn");
+
+// 获取题目类型的下拉列表
 let selectObj = document.getElementById('question_type');
 
+// 切换题目选项卡
 selectObj.onchange = function () {
     //获取选中项的索引
     let index = selectObj.selectedIndex;
-    console.log(index);
-
-    //获取选中项的文本
-    let text = selectObj.options[index].text;
-    console.log(text);
 
     //获取选中项的value值
     let value = selectObj.options[index].value;
-    console.log(value);
 
     switch (value) {
         case "1":
@@ -38,3 +37,11 @@ selectObj.onchange = function () {
             break;
     }
 }
+
+// 创建按钮
+function create() {
+    
+}
+
+// 创建按钮
+creBtn.onclick = create;

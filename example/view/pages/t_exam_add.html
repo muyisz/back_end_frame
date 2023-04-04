@@ -38,7 +38,6 @@
         </ul>
     </div>
     <div class="main">
-        <!-- <form action="#" method="post"> -->
         <input type="radio" name="create" id="hand" value="hand" checked><label for="hand">自行编辑</label>
         <br>
         <input type="radio" name="create" id="auto" value="auto"><label for="auto">自动生成</label>
@@ -55,7 +54,6 @@
                 </div>
             </div>
 
-            <!-- 不清楚这个按钮具体作用，暂时放在此位置 -->
             <button class="addBtn">添加题目</button>
 
             <div class="add">
@@ -67,16 +65,17 @@
                             </td>
                             <td class="difficulty">L1</td>
                             <td class="choose">
-                                <button>选择</button>
+                                <button class="choiceBtn">选择</button>
                             </td>
                         </tr>
                         <tr>
                             <td class="question">
-                                <p>These words all mean to decide which thing or person you want out of the ones that are available.</p>
+                                <p>These words all mean to decide which thing or person you want out of the ones that
+                                    are available.</p>
                             </td>
                             <td class="difficulty">L2</td>
                             <td class="choose">
-                                <button>选择</button>
+                                <button class="choiceBtn">选择</button>
                             </td>
                         </tr>
                         <tr>
@@ -119,7 +118,6 @@
                 <div class="select">
                     难度：
                     <select name="difficulty" id="">
-                        <!-- <option value="" disabled selected>难度</option> -->
                         <option value="L1">L1</option>
                         <option value="L2">L2</option>
                         <option value="L3">L3</option>
@@ -132,10 +130,13 @@
                 </div>
             </div>
             <div class="auto_btn">
-                <button>自动生成</button>
+                <button class="autoBtn">自动生成</button>
             </div>
         </div>
-        <!-- </form> -->
+
+        <div class="finish">
+            <button class="finBtn">确认</button>
+        </div>
     </div>
 
 

@@ -3,7 +3,6 @@
 .main {
     width: 1200px;
     margin: auto;
-    // border: 1px solid black;
 
     .title {
         margin-top: 20px;
@@ -42,6 +41,7 @@
             }
 
             textarea {
+                width: 360px;
                 outline: none;
                 resize: none;
             }
@@ -57,6 +57,7 @@
 
             .answer_example {
                 textarea {
+                    width: 360px;
                     outline: none;
                     resize: none;
                 }

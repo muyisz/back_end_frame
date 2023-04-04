@@ -8,10 +8,14 @@
 }
 .main table td,
 .main table th {
-  width: 240px;
+  width: 250px;
   height: 40px;
   text-align: center;
   border: 1px solid #DBDBDB;
+}
+.main table td:last-of-type,
+.main table th:last-of-type {
+  width: 200px;
 }
 .main table td button,
 .main table th button {
@@ -22,4 +26,4 @@
   box-shadow: 2px 2px 5px #BBBBBB;
   border-radius: 3px;
   cursor: pointer;
-}/*# sourceMappingURL=s_choose_exam.css.map */
+}/*# sourceMappingURL=rank.css.map */

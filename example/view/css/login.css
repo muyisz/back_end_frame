@@ -12,10 +12,12 @@
   text-align: center;
   background-color: #B4FDFF;
   border: 1px solid #BBBBBB;
+  border-radius: 10px;
   margin-bottom: 30px;
 }
 .main .title h1 {
   font-size: 40px;
+  color: #666666;
 }
 .main form {
   margin: auto;
@@ -76,4 +78,5 @@
   border-radius: 5px;
   font-size: 18px;
   color: #000000;
-}/*# sourceMappingURL=index.css.map */
+  cursor: pointer;
+}/*# sourceMappingURL=login.css.map */

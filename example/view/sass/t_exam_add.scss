@@ -69,6 +69,10 @@
                         td {
                             height: 36px;
                             border: 1px solid #E3E3E3;
+
+                            &:first-of-type {
+                                padding-left: 10px;
+                            }
                         }
 
                         .question p {
@@ -103,6 +107,7 @@
 
     .auto {
         display: none;
+
         .auto_content {
             display: flex;
             margin-top: 30px;
@@ -138,8 +143,10 @@
                 }
             }
         }
+
         .auto_btn {
             margin-top: 200px;
+
             button {
                 width: 80px;
                 height: 30px;
@@ -157,5 +164,20 @@
 
     #auto:checked~.auto {
         display: block;
+    }
+
+    .finish {
+        margin-top: 80px;
+        padding: 60px 0;
+
+        button {
+            width: 200px;
+            height: 50px;
+            border: 1px solid #BBBBBB;
+            border-radius: 5px;
+            outline: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
     }
 }
