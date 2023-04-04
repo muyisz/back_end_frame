@@ -11,7 +11,7 @@ struct UserReq {
 };
 REGESTER(UserReq, id, name, type, password)
 
-struct Res{
+struct Res {
 	int code;
 	string message;
 };
@@ -21,7 +21,7 @@ struct ProgramData {
 	string in;
 	string out;
 };
-REGESTER(ProgramData,in,out)
+REGESTER(ProgramData, in, out)
 
 struct SubjectReq {
 	string name;
@@ -55,7 +55,7 @@ REGESTER(GetSubjectListRes, code, message, subjectList);
 struct GetDetailReq {
 	int id;
 };
-REGESTER(GetDetailReq,id)
+REGESTER(GetDetailReq, id)
 
 struct SubjectDetail {
 	int id;
@@ -74,4 +74,26 @@ struct GetSubjectDetailRes {
 	string message;
 	SubjectDetail subject;
 };
-REGESTER(GetSubjectDetailRes,code,message,subject)
+REGESTER(GetSubjectDetailRes, code, message, subject)
+
+struct CreateTestPaperReq {
+	string subjectList;
+	string creater;
+	int facilityValue;
+};
+REGESTER(CreateTestPaperReq, subjectList, creater, facilityValue)
+
+struct TestPaperDetailData {
+	int id;
+	string creater;
+	int facilityValue;
+	vector<SubjectListCell>subjectList;
+};
+REGESTER(TestPaperDetailData, id, creater, facilityValue, subjectList)
+
+struct GetTestPaperDetailRes {
+	int code;
+	string message;
+	TestPaperDetailData testPaperDetail;
+};
+REGESTER(GetTestPaperDetailRes,code,message, testPaperDetail)

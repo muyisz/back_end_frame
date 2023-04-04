@@ -23,3 +23,10 @@ struct InternalSubjectDetail {
 	vector<string> test;
 	vector<vector<string>>data;
 };
+
+struct InternalTestPaperDetail {
+	int id;
+	string creater;
+	int facilityValue;
+	vector<InternalSubjectListCell>subjectList;
+};

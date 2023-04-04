@@ -32,3 +32,10 @@ struct programData {
 	string dataIn;
 	string dataOut;
 };
+
+struct testPaper {
+	int id;
+	string subjectList;
+	string creater;
+	int facilityValue;
+};

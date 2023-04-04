@@ -1,5 +1,6 @@
 #include"internal.h"
 #include"const.h"
+#include"../tool/tool.h"
 
 muyi::error* Login(string id, string password, int type) {
 	auto userData = dataBase::instence()->GetUserByIDAndType(id, type);
@@ -125,4 +126,54 @@ muyi::returnTable<InternalSubjectDetail> GetSubjectDetailInternal(int id) {
 		returnData.Data.data.push_back(cell);
 	}
 	return returnData;
+}
+
+muyi::error* CreateTestPaper(string subjectList, string creater, int facilityValue) {
+	auto err = dataBase::instence()->CreateTestPaper(subjectList, creater, facilityValue);
+	if (err != nullptr) {
+		return err;
+	}
+	return nullptr;
+}
+
+muyi::returnTable<InternalTestPaperDetail> TestPaperDetail(int id) {
+	muyi::returnTable<InternalTestPaperDetail> returnData;
+
+	auto testPaperData = dataBase::instence()->GetTestPaperByID(id);
+	if (testPaperData.Err != nullptr) {
+		returnData.Err = testPaperData.Err;
+		return returnData;
+	}
+	returnData.Data.id = testPaperData.Data.id;
+	returnData.Data.facilityValue = testPaperData.Data.facilityValue;
+	returnData.Data.creater= testPaperData.Data.creater;
+
+	auto subjectIDList = Spilt(testPaperData.Data.subjectList, ",");
+	for (int i = 0; i < subjectIDList.size(); i++) {
+		InternalSubjectListCell cell;
+		auto subjectData = dataBase::instence()->GetSubjectByID(muyi::mstring(subjectIDList[i]).ToInt().Data);
+		if (subjectData.Err != nullptr) {
+			//todo 打印日志
+			delete subjectData.Err;
+			continue;
+		}
+		cell.id = subjectData.Data.id;
+		cell.answer = subjectData.Data.answer;
+		cell.content = subjectData.Data.content;
+		cell.knowledgePoint = subjectData.Data.knowledgePoint;
+		cell.name = subjectData.Data.name;
+		cell.type = subjectData.Data.type;
+		if (cell.type == SubjectProgram) {
+			auto programTestData = dataBase::instence()->GetProgramTest(cell.id);
+			if (programTestData.Err != nullptr) {
+				//todo打印日志
+				delete[]programTestData.Err;
+				continue;
+			}
+			cell.test.push_back(programTestData.Data.exampleIn);
+			cell.test.push_back(programTestData.Data.exampleOut);
+		}
+		returnData.Data.subjectList.push_back(cell);
+	}
+
 }

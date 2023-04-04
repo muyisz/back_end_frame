@@ -2,6 +2,7 @@
 #include<mysql.h>
 #include<vector>
 #include"model.h"
+#include"../../back_end_frame/header/mstring.h"
 #include"../../back_end_frame/header/error.h"
 
 class dataBase {
@@ -17,6 +18,8 @@ public:
 	muyi::returnTable<programTest>GetProgramTest(int id);
 	muyi::returnTable<vector<programData>>GetProgramData(int id);
 	muyi::returnTable<subject>GetSubjectByID(int id);
+	muyi::error* CreateTestPaper(string subjectList, string creater, int facilityValue);
+	muyi::returnTable<testPaper>GetTestPaperByID(int id);
 
 	muyi::returnTable<MYSQL_RES*>query(const char* format);
 	muyi::error* insert(const char* format);

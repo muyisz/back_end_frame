@@ -181,6 +181,7 @@
     <ClInclude Include="example\internal\const.h" />
     <ClInclude Include="example\internal\internal.h" />
     <ClInclude Include="example\router\router.h" />
+    <ClInclude Include="example\tool\tool.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="back_end_frame\source\http.cpp" />
@@ -196,12 +197,12 @@
     <ClCompile Include="example\internal\internal.cpp" />
     <ClCompile Include="example\main.cpp" />
     <ClCompile Include="example\router\router.cpp" />
+    <ClCompile Include="example\tool\tool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="example\data\_.txt" />
     <Text Include="example\handler\_.txt" />
     <Text Include="example\router\_.txt" />
-    <Text Include="example\util\_.txt" />
     <Text Include="example\view\html\_.txt" />
     <Text Include="example\view\js\_.txt" />
   </ItemGroup>

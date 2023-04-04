@@ -75,6 +75,9 @@
     <ClInclude Include="example\internal\body.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="example\tool\tool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="back_end_frame\source\muyi.cpp">
@@ -116,12 +119,14 @@
     <ClCompile Include="example\internal\internal.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="example\tool\tool.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="example\data\_.txt" />
     <Text Include="example\handler\_.txt" />
     <Text Include="example\router\_.txt" />
-    <Text Include="example\util\_.txt" />
     <Text Include="example\view\html\_.txt" />
     <Text Include="example\view\js\_.txt" />
   </ItemGroup>

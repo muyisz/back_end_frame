@@ -1,8 +1,8 @@
 #include"data.h"
-#include"../../back_end_frame/header/mstring.h"
 #include"../config/config.h"
 #include"const.h"
 #include<iostream>
+
 
 dataBase* dataBase::instenceDataBase = nullptr;
 
@@ -192,6 +192,36 @@ muyi::returnTable<subject>dataBase::GetSubjectByID(int id) {
 	returnData.Data.answer = column[3];
 	returnData.Data.knowledgePoint = muyi::mstring(column[4]).ToInt().Data;
 	returnData.Data.type = muyi::mstring(column[5]).ToInt().Data;
+	return returnData;
+}
+
+muyi::error* dataBase::CreateTestPaper(string subjectList, string creater, int facilityValue) {
+	char* sql = new char[10240];
+	sprintf(sql, CreateTestPaperFormat, subjectList, creater, facilityValue);
+	return insert(sql);
+}
+
+muyi::returnTable<testPaper> dataBase::GetTestPaperByID(int id) {
+	muyi::returnTable<testPaper> returnData;
+	char* sql = new char[1024];
+	sprintf(sql, GetTestPaperByIDFormat, id);
+	auto resData = query(sql);
+	delete[]sql;
+
+	if (resData.Err != nullptr) {
+		returnData.Err = resData.Err;
+		return returnData;
+	}
+	MYSQL_ROW column = mysql_fetch_row(resData.Data);
+	if (column == nullptr) {
+		returnData.Err = muyi::error::NewError(CanNotFind);
+		return returnData;
+	}
+
+	returnData.Data.id = muyi::mstring(column[0]).ToInt().Data;
+	returnData.Data.subjectList = column[1];
+	returnData.Data.creater = column[2];
+	returnData.Data.facilityValue = muyi::mstring(column[3]).ToInt().Data;
 	return returnData;
 }
 

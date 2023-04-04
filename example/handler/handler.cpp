@@ -119,6 +119,7 @@ void GetSubjectDetail(muyi::context* c) {
 	if (subjectData.Err != nullptr) {
 		res.code = -1;
 		res.message = subjectData.Err->GetMsg();
+		delete subjectData.Err;
 	}
 	else {
 		res.code = 0;
@@ -137,6 +138,58 @@ void GetSubjectDetail(muyi::context* c) {
 				cell.in = subjectData.Data.data[i][0];
 				cell.out = subjectData.Data.data[i][1];
 				res.subject.data.push_back(cell);
+			}
+		}
+	}
+	c->JSON(HTTPStateOK, res);
+}
+
+void PostCreateTestPaper(muyi::context* c) {
+	CreateTestPaperReq req;
+	Res res;
+
+	toStruct(req, c->GetReqData());
+	auto err = CreateTestPaper(req.subjectList, req.creater, req.facilityValue);
+	if (err != nullptr) {
+		res.code = -1;
+		res.message = err->GetMsg();
+		delete err;
+	}
+	else {
+		res.code = 0;
+		res.message = "";
+	}
+	c->JSON(HTTPStateOK, res);
+}
+
+void GetTestPaperDetail(muyi::context* c) {
+	GetDetailReq req;
+	GetTestPaperDetailRes res;
+
+	toStruct(req, c->GetReqData());
+	auto testPaperData = TestPaperDetail(req.id);
+	if (testPaperData.Err != nullptr) {
+		res.code = -1;
+		res.message = testPaperData.Err->GetMsg();
+		delete testPaperData.Err;
+	}
+	else {
+		res.code = 0;
+		res.message = "";
+		res.testPaperDetail.id = testPaperData.Data.id;
+		res.testPaperDetail.creater = testPaperData.Data.creater;
+		res.testPaperDetail.facilityValue = testPaperData.Data.facilityValue;
+		for (int i = 0; i < testPaperData.Data.subjectList.size(); i++) {
+			SubjectListCell cell;
+			cell.id = testPaperData.Data.subjectList[i].id;
+			cell.answer = testPaperData.Data.subjectList[i].answer;
+			cell.content = testPaperData.Data.subjectList[i].content;
+			cell.knowledgePoint = testPaperData.Data.subjectList[i].knowledgePoint;
+			cell.name = testPaperData.Data.subjectList[i].name;
+			cell.type = testPaperData.Data.subjectList[i].type;
+			if (cell.type == SubjectProgram) {
+				cell.test.in = testPaperData.Data.subjectList[i].test[0];
+				cell.test.out = testPaperData.Data.subjectList[i].test[1];
 			}
 		}
 	}
