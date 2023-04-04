@@ -8,7 +8,7 @@
     <title>在线评测系统</title>
     <link rel="stylesheet" href="../font/iconfont.css">
     <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/s_choose_exam.css">
+    <link rel="stylesheet" href="../css/rank.css">
 </head>
 <body>
     <header>
@@ -17,13 +17,13 @@
         </div>
         <nav class="nav">
             <ul>
-                <a href="">
+                <a href="" class="active">
                     <li><span class="iconfont icon-home"></span>题库</li>
                 </a>
                 <a href="">
                     <li><span class="iconfont icon-xinfeng"></span>考试列表</li>
                 </a>
-                <a href="" class="active">
+                <a href="">
                     <li><span class="iconfont icon-touxiang"></span>练习</li>
                 </a>
             </ul>
@@ -31,29 +31,29 @@
     </header>
     <div class="left_fixed">
         <ul>
-            <li class="action"><a href="#"><span class="iconfont icon-59xuanze-3"></span>选择考试</a></li>
-            <li><a href="#"><span class="iconfont icon-lishi"></span>练习历史</a></li>
+            <li><a href="#"><span class="iconfont icon-tianjia"></span>添加题目</a></li>
+            <li><a href="#"><span class="iconfont icon-shebeizhuangtai"></span>在线状态</a></li>
+            <li class="action"><a href="#"><span class="iconfont icon-paixing"></span>排行榜</a></li>
+            <li><a href="#"><span class="iconfont icon-liebiao"></span>题目列表</a></li>
         </ul>
     </div>
     <div class="main">
         <table>
             <thead>
                 <tr>
-                    <th>考试名称</th>
-                    <th>考试编号</th>
-                    <th>难度</th>
-                    <th>创建人</th>
+                    <th>姓名</th>
+                    <th>编号</th>
+                    <th>正确数</th>
                     <th>操作</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>大—期末考试</td>
-                    <td>123456</td>
-                    <td>L1</td>
                     <td>张三</td>
+                    <td>12456789</td>
+                    <td>10</td>
                     <td>
-                        <button>开始考试</button>
+                        <button class="detBtn">查看详情</button>
                     </td>
                 </tr>
                 <tr>
@@ -61,10 +61,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
                 </tr>
                 <tr>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -74,6 +72,6 @@
         </table>
     </div>
 
-    <script src="../js/s_choose_exam.js"></script>
+    <script src="../js/rank.js"></script>
 </body>
 </html>

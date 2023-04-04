@@ -33,6 +33,7 @@
   border-bottom: 1px solid #D3D3D3;
 }
 .main .exam_item .option textarea {
+  width: 360px;
   outline: none;
   resize: none;
 }
@@ -43,6 +44,7 @@
   line-height: 60px;
 }
 .main .exam_item .answer .answer_example textarea {
+  width: 360px;
   outline: none;
   resize: none;
 }

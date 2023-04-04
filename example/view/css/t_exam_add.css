@@ -58,6 +58,9 @@
   height: 36px;
   border: 1px solid #E3E3E3;
 }
+.main .hand .add .question_content table tr td:first-of-type {
+  padding-left: 10px;
+}
 .main .hand .add .question_content table tr .question p {
   width: 270px;
   text-align: left;
@@ -127,4 +130,17 @@
 }
 .main #auto:checked ~ .auto {
   display: block;
+}
+.main .finish {
+  margin-top: 80px;
+  padding: 60px 0;
+}
+.main .finish button {
+  width: 200px;
+  height: 50px;
+  border: 1px solid #BBBBBB;
+  border-radius: 5px;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
 }/*# sourceMappingURL=t_exam_add.css.map */
