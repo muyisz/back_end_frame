@@ -9,7 +9,7 @@ void InitRouter(muyi::muyiController& r) {
 	r.GET("/subject/list_pages",GetSubjestListPages);
 	r.GET("/subject/detail_pages",GetSubjestDetailPages);
 	r.GET("/subject/create_pages",CreateSubjestPages);
-	r.GET("test_paper/choose_example", GetChooseExample);
+	r.GET("/test_paper/choose_example", GetChooseExample);
 	r.GET("/test_paper/list_pages",GetTestPaperListPages);
 	r.GET("/test_paper/detail_pages", GetTestPaperDetailPages);
 	r.GET("/test_paper/create_pages",CreateTestPaperPages);

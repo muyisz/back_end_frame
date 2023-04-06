@@ -111,9 +111,9 @@ void toStruct(std::vector<TYPE>& data, muyi::mstring json) {
 	if(firstSeat!=muyi::mstring::maxSize()){\
 	nameLength= (muyi::mstring("\"") + #dataName + "\":").size();\
 	if(dataTypeInfo::Instence()->GetDataType(typeid(object.dataName).name()) == ObjectBase){\
-		lastSeat=json.find(muyi::mstring(","));\
+		lastSeat=json.findFrom(firstSeat,muyi::mstring(","));\
 		if(lastSeat==muyi::mstring::maxSize()){\
-			lastSeat=json.find(muyi::mstring("}"));}}\
+			lastSeat=json.findFrom(firstSeat,muyi::mstring("}"));}}\
 	else if(isVector(typeid(object.dataName).name())){\
 		lastSeat=json.MatchParentheses('[',']',firstSeat+nameLength);lastSeat++;}\
 	else if (isStruct(typeid(object.dataName).name())){\

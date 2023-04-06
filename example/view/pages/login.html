@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../font/iconfont.css">
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/jquery-3.1.1.min.js"></script>
 </head>
 
 <body>
@@ -38,15 +39,15 @@
         <form action="#" method="post">
             <label for="" class="lab">
                 <div class="input_icon "><span class="iconfont icon-zhanghao"></span></div>
-                <input type="text" placeholder="请输入账号" class="account" name="account">
+                <input type="text" placeholder="请输入账号" class="account" id="account" name="account">
             </label>
             <label for="" class="lab">
                 <div class="input_icon"><span class="iconfont icon-ziyuanxhdpi"></span></div>
-                <input type="password" placeholder="请输入密码" name="password">
+                <input type="password" placeholder="请输入密码" id="password" name="password">
             </label>
-            <div class="check"><input type="radio" name="status" id="student" value="student" checked><label
+            <div class="check"><input type="radio" name="status" id="student" value=1 checked><label
                     for="student">学生登录</label></div>
-            <div class="check"><input type="radio" name="status" id="teacher" value="teacher"><label
+            <div class="check"><input type="radio" name="status" id="teacher" value=2><label
                     for="teacher">教师登录</label></div>
             <div class="btn"><button type="submit" class="login">登 &nbsp; 录</button></div>
             <div class="btn"><a href=""><button type="button" class="register">注 &nbsp; 册</button></a></div>

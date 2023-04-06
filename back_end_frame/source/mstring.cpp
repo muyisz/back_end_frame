@@ -204,4 +204,33 @@ namespace muyi {
 		return sourceString;
 	}
 
+	unsigned int mstring::findFrom(int seat, mstring data) {
+		mstring findData = Cut(seat, sourceString.size()).Data;
+		if (findData.find(data) == mstring::maxSize()) {
+			return  mstring::maxSize();
+		}
+		return findData.find(data) + seat;
+	}
+	unsigned int mstring::findFrom(int seat, const char* data) {
+		mstring findData = Cut(seat, sourceString.size()).Data;
+		if (findData.find(data) == mstring::maxSize()) {
+			return  mstring::maxSize();
+		}
+		return findData.find(data) + seat;
+	}
+	unsigned int mstring::findFrom(int seat, std::string data) {
+		mstring findData = Cut(seat, sourceString.size()).Data;
+		if (findData.find(data) == mstring::maxSize()) {
+			return  mstring::maxSize();
+		}
+		return findData.find(data) + seat;
+	}
+	unsigned int mstring::findFrom(int seat, char data) {
+		mstring findData = Cut(seat, sourceString.size()).Data;
+		if (findData.find(data) == mstring::maxSize()) {
+			return  mstring::maxSize();
+		}
+		return findData.find(data) + seat;
+	}
+
 }

@@ -39,6 +39,10 @@ namespace muyi {
 		void swap(mstring& other);
 		const char* c_str();
 		int size();
+		unsigned int findFrom(int seat, mstring data);
+		unsigned int findFrom(int seat, const char* data);
+		unsigned int findFrom(int seat, std::string data);
+		unsigned int findFrom(int seat, char data);
 		unsigned int find(mstring data);
 		unsigned int find(const char* data);
 		unsigned int find(std::string data);

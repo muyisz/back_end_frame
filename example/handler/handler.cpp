@@ -27,7 +27,6 @@ void CreateSubjestPages(muyi::context* c) {
 void GetTestPaperListPages(muyi::context* c) {
 	c->HTML(HTTPStateOK, "t_exam_list.html");
 }
-
 void GetTestPaperDetailPages(muyi::context* c) {
 	c->HTML(HTTPStateOK, "t_exam_probe.html");
 }
