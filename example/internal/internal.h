@@ -10,3 +10,4 @@ muyi::returnTable<vector<InternalSubjectListCell>> GetAllSubject();
 muyi::returnTable<InternalSubjectDetail> GetSubjectDetailInternal(int id);
 muyi::error* CreateTestPaper(vector<int> subjectList, string creater, int facilityValue);
 muyi::returnTable<InternalTestPaperDetail> TestPaperDetail(int id);
+muyi::returnTable<vector<InternalTestPaper>> GetAllTestPaper();

@@ -96,4 +96,18 @@ struct GetTestPaperDetailRes {
 	string message;
 	TestPaperDetailData testPaperDetail;
 };
-REGESTER(GetTestPaperDetailRes,code,message, testPaperDetail)
+REGESTER(GetTestPaperDetailRes, code, message, testPaperDetail)
+
+struct GetTestPaperListCell {
+	int id;
+	string creater;
+	int facilityValue;
+};
+REGESTER(GetTestPaperListCell, id, creater, facilityValue)
+
+struct GetTestPaperListRes {
+	int code;
+	string message;
+	vector<GetTestPaperListCell> testPaperList;
+};
+REGESTER(GetTestPaperListRes, code, message, testPaperList)

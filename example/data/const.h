@@ -14,3 +14,4 @@ const char* GetProgramDataFormat = "select * from program_data where id=%d";
 const char* GetSubjectByIDFormat = "select * from subject where id=%d";
 const char* CreateTestPaperFormat= "insert into test_paper(subject_list,creater,facility_value) values('%s','%s', '%d')";
 const char* GetTestPaperByIDFormat = "select * from test_paper where id=%d";
+const char* GetAllTestPaperFormat = "select * from test_paper";

@@ -225,6 +225,28 @@ muyi::returnTable<testPaper> dataBase::GetTestPaperByID(int id) {
 	return returnData;
 }
 
+muyi::returnTable<vector<testPaper>> dataBase::GetAllTestPaper() {
+	muyi::returnTable<vector<testPaper>> returnData;
+	char* sql = new char[1024];
+	auto resData = query(sql);
+	delete[]sql;
+
+	if (resData.Err != nullptr) {
+		returnData.Err = resData.Err;
+		return returnData;
+	}
+	MYSQL_ROW column;
+	while (column = mysql_fetch_row(resData.Data)) {
+		testPaper cell;
+		cell.id = muyi::mstring(column[0]).ToInt().Data;
+		cell.subjectList = column[1];
+		cell.creater = column[2];
+		cell.facilityValue = muyi::mstring(column[3]).ToInt().Data;
+		returnData.Data.push_back(cell);
+	}
+	return returnData;
+}
+
 muyi::returnTable<MYSQL_RES*>dataBase::query(const char* format) {
 	muyi::returnTable<MYSQL_RES*> returnData;
 

@@ -20,6 +20,7 @@ public:
 	muyi::returnTable<subject>GetSubjectByID(int id);
 	muyi::error* CreateTestPaper(string subjectList, string creater, int facilityValue);
 	muyi::returnTable<testPaper>GetTestPaperByID(int id);
+	muyi::returnTable<vector<testPaper>> GetAllTestPaper();
 
 	muyi::returnTable<MYSQL_RES*>query(const char* format);
 	muyi::error* insert(const char* format);

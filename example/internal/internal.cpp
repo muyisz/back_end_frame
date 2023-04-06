@@ -179,3 +179,21 @@ muyi::returnTable<InternalTestPaperDetail> TestPaperDetail(int id) {
 	}
 	return returnData;
 }
+
+muyi::returnTable<vector<InternalTestPaper>> GetAllTestPaper() {
+	muyi::returnTable<vector<InternalTestPaper>> returnData;
+	auto testPaperListData = dataBase::instence()->GetAllTestPaper();
+	if (testPaperListData.Err != nullptr) {
+		returnData.Err = testPaperListData.Err;
+		return returnData;
+	}
+
+	for (int i = 0; i < testPaperListData.Data.size(); i++) {
+		InternalTestPaper cell;
+		cell.id = testPaperListData.Data[i].id;
+		cell.creater = testPaperListData.Data[i].creater;
+		cell.facilityValue = testPaperListData.Data[i].facilityValue;
+		returnData.Data.push_back(cell);
+	}
+	return returnData;
+}

@@ -8,6 +8,37 @@ void GetLogin(muyi::context* c) {
 	c->HTML(HTTPStateOK, "login.html");
 }
 
+void GetRegester(muyi::context* c) {
+	c->HTML(HTTPStateOK, "register.html");
+}
+
+void GetSubjestListPages(muyi::context* c) {
+	c->HTML(HTTPStateOK, "t_question_list.html");
+}
+
+void GetSubjestDetailPages(muyi::context* c) {
+	c->HTML(HTTPStateOK, "t_question_detailed.html");
+}
+
+void CreateSubjestPages(muyi::context* c) {
+	c->HTML(HTTPStateOK, "t_question_add.html");
+}
+
+void GetTestPaperListPages(muyi::context* c) {
+	c->HTML(HTTPStateOK, "t_exam_list.html");
+}
+
+void GetTestPaperDetailPages(muyi::context* c) {
+	c->HTML(HTTPStateOK, "t_exam_probe.html");
+}
+void CreateTestPaperPages(muyi::context* c) {
+	c->HTML(HTTPStateOK, "t_exam_add.html");
+}
+
+void GetChooseExample(muyi::context* c) {
+	c->HTML(HTTPStateOK, "t_choose_exam.html");
+}
+
 void PostLogin(muyi::context* c) {
 	UserReq userInfo;
 	Res res;
@@ -192,6 +223,28 @@ void GetTestPaperDetail(muyi::context* c) {
 				cell.test.out = testPaperData.Data.subjectList[i].test[1];
 			}
 			res.testPaperDetail.subjectList.push_back(cell);
+		}
+	}
+	c->JSON(HTTPStateOK, res);
+}
+
+void GetTestPaperList(muyi::context* c) {
+	GetTestPaperListRes res;
+
+	auto testPaperListData = GetAllTestPaper();
+	if (testPaperListData.Err != nullptr) {
+		res.code = -1;
+		res.message = testPaperListData.Err->GetMsg();
+		delete testPaperListData.Err;
+	}
+	else {
+		res.code = 0;
+		res.message = "";
+		for (int i = 0; i < testPaperListData.Data.size(); i++) {
+			GetTestPaperListCell cell;
+			cell.id = testPaperListData.Data[i].id;
+			cell.facilityValue = testPaperListData.Data[i].facilityValue;
+			cell.creater = testPaperListData.Data[i].creater;
 		}
 	}
 	c->JSON(HTTPStateOK, res);

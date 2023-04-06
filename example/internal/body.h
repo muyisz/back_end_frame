@@ -30,3 +30,9 @@ struct InternalTestPaperDetail {
 	int facilityValue;
 	vector<InternalSubjectListCell>subjectList;
 };
+
+struct InternalTestPaper {
+	int id;
+	string creater;
+	int facilityValue;
+};
