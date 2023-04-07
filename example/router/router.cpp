@@ -6,7 +6,7 @@ void InitRouter(muyi::muyiController& r) {
 	r.SetHTMLGlob("example/view/pages/");
 	r.GET("/", GetLogin);
 	r.GET("/regester", GetRegester);
-	r.GET("/subject/list_pages",GetSubjestListPages);
+	r.GET("/subject/create_pages",GetSubjestListPages);
 	r.GET("/subject/detail_pages",GetSubjestDetailPages);
 	r.GET("/subject/create_pages",CreateSubjestPages);
 	r.GET("/test_paper/choose_example", GetChooseExample);

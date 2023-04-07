@@ -43,11 +43,11 @@
     <div class="main">
         <div class="question_name">
             <h4>题目名称</h4>
-            <input type="text" class="name" placeholder="题目描述">
+            <input type="text" class="name" id="name" placeholder="题目描述">
         </div>
         <div class="question_content">
             <h4>题目内容</h4>
-            <textarea type="text" class="name" placeholder="题面..."></textarea>
+            <textarea type="text" class="name" id="content" placeholder="题面..."></textarea>
         </div>
         <div class="question_select">
             <select name="" id="question_type">
@@ -68,19 +68,19 @@
         <div class="program_question hidden">
             <div class="example_input">
                 <h4>样例出入</h4>
-                <textarea name="" id="" cols="30" rows="10">-</textarea>
+                <textarea name="" id="test_in" cols="30" rows="10">-</textarea>
             </div>
             <div class="example_outcome">
                 <h4>样例输出</h4>
-                <textarea name="" id="" cols="30" rows="10">hello world</textarea>
+                <textarea name="" id="test_out" cols="30" rows="10">hello world</textarea>
             </div>
             <div class="data_input">
                 <h4>输入数据</h4>
-                <textarea name="" id="" cols="30" rows="10">-</textarea>
+                <textarea name="" id="data_in" cols="30" rows="10">-</textarea>
             </div>
             <div class="data_outcome">
                 <h4>输出数据</h4>
-                <textarea name="" id="" cols="30" rows="10">hello world</textarea>
+                <textarea name="" id="data_out" cols="30" rows="10">hello world</textarea>
             </div>
         </div>
 
@@ -88,7 +88,7 @@
         <div class="objective_question hidden">
             <div class="answer">
                 <h4>正确答案：</h4>
-                <textarea name="" id="" cols="30" rows="10" class="answer_content" placeholder="支持正则表达式..."></textarea>
+                <input name="" id="answer1" cols="30" rows="10" class="answer_content" placeholder="支持正则表达式..."></input>
             </div>
         </div>
 
@@ -103,7 +103,7 @@
                 </ol>
             </div>
             <div class="answer">
-                正确答案：<input type="text">
+                正确答案：<input type="text" id="answer2">
             </div>
         </div>
 
