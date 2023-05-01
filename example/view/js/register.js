@@ -20,13 +20,30 @@ function valueLen() {
 
 // “注册” 按钮
 function action() {
-    valueLen();
-    
+    // valueLen();
+    let postData = {
+        id: $('#id').val(),
+        password: $('#password').val(),
+        type: 1,
+        name: $('#name').val(),
+    }
+
+    $.ajax({
+        type: 'post',
+        url: '/regester',
+        dataType: 'json',
+        data: JSON.stringify(postData),
+        success: function (res) {
+            window.location.href = '/subject/list_pages'
+        }
+    })
 }
 
 // “返回” 按钮
 function back() {
-
+    alert(1)
+    window.location.href = '/'
+    window.event.returnValue = false;
 }
 
 // “注册” 按钮

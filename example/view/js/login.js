@@ -32,4 +32,5 @@ function login() {
 // "注册" 按钮
 function register() {
     window.location.href = '/regester'
+    window.event.returnValue=false;
 }
