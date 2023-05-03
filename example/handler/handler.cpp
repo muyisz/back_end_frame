@@ -65,7 +65,7 @@ void PostRegester(muyi::context* c) {
 	auto err = Regester(userInfo.id, userInfo.name, userInfo.password, userInfo.type);
 	if (err != nullptr) {
 		//todo ´òÓ¡ÈÕÖ¾
-		res.code = -1;
+		res.code = 0;
 		res.message = err->GetMsg();
 		delete err;
 	}

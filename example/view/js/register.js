@@ -35,6 +35,7 @@ function action() {
         data: JSON.stringify(postData),
         success: function (res) {
             window.location.href = '/subject/list_pages'
+            window.event.returnValue = false;
         }
     })
 }

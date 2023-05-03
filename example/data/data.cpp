@@ -90,13 +90,13 @@ muyi::returnTable<int> dataBase::GetSubjectIdByNameAndContent(string name, strin
 
 muyi::error* dataBase::CreateProgramTest(int subjectID, string exampleIn, string exampleOut) {
 	char* sql = new char[10240];
-	sprintf(sql, CreateProgramTestFormat, subjectID, exampleIn.c_str(), exampleOut);
+	sprintf(sql, CreateProgramTestFormat, subjectID, exampleIn.c_str(), exampleOut.c_str());
 	return insert(sql);
 }
 
 muyi::error* dataBase::CreateProgramData(int subjectID, string dataIn, string dataOut) {
 	char* sql = new char[10240];
-	sprintf(sql, CreateProgramDataFormat, subjectID, dataIn.c_str(), dataOut);
+	sprintf(sql, CreateProgramDataFormat, subjectID, dataIn.c_str(), dataOut.c_str());
 	return insert(sql);
 }
 

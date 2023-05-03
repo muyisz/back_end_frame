@@ -34,7 +34,7 @@ muyi::error* AddSubject(string name, string content, string answer, int knowledg
 		if (subjectIDData.Err != nullptr) {
 			return subjectIDData.Err;
 		}
-		auto err = dataBase::instence()->CreateProgramTest(subjectIDData.Data, test[0], test[1]);
+		auto err = dataBase::instence()->CreateProgramData(subjectIDData.Data, test[0], test[1]);
 		if (err != nullptr) {
 			return err;
 		}
@@ -195,5 +195,40 @@ muyi::returnTable<vector<InternalTestPaper>> GetAllTestPaper() {
 		cell.facilityValue = testPaperListData.Data[i].facilityValue;
 		returnData.Data.push_back(cell);
 	}
+	return returnData;
+}
+
+bool creatFile(muyi::mstring name, muyi::mstring content) {
+	string filename(name.c_str());
+	fstream outputFstream;
+	outputFstream.open(filename, std::ios_base::out);
+	if (!outputFstream) {
+		return false;
+	}
+
+	outputFstream << content.GetSourceString();
+	outputFstream.close();
+	return true;
+}
+
+muyi::error* compileCppFile(muyi::mstring name) {
+	char* order = new char[1024];
+	sprintf(order, CompileCppFileOrder, name);
+	system(order);
+
+	return nullptr;
+}
+
+muyi::error* runCode(muyi::mstring exeName, muyi::mstring inName, muyi::mstring outName) {
+	char* order = new char[1024];
+	sprintf(order, StartRunOrder, exeName, inName, outName);
+	system(order);
+
+	return nullptr;
+}
+
+muyi::returnTable<muyi::mstring>GetFileContent(muyi::mstring name) {
+	muyi::returnTable<muyi::mstring> returnData;
+
 	return returnData;
 }
