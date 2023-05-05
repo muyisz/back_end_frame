@@ -193,11 +193,11 @@ void PostCreateTestPaper(muyi::context* c) {
 }
 
 void GetTestPaperDetail(muyi::context* c) {
-	GetDetailReq req;
 	GetTestPaperDetailRes res;
 
-	toStruct(req, c->GetReqData());
-	auto testPaperData = TestPaperDetail(req.id);
+	int id = muyi::mstring(c->GetUrlData(UrlDataId)).ToInt().Data;
+
+	auto testPaperData = TestPaperDetail(id);
 	if (testPaperData.Err != nullptr) {
 		res.code = -1;
 		res.message = testPaperData.Err->GetMsg();
@@ -244,6 +244,7 @@ void GetTestPaperList(muyi::context* c) {
 			cell.id = testPaperListData.Data[i].id;
 			cell.facilityValue = testPaperListData.Data[i].facilityValue;
 			cell.creater = testPaperListData.Data[i].creater;
+			res.testPaperList.push_back(cell);
 		}
 	}
 	c->JSON(HTTPStateOK, res);

@@ -18,7 +18,6 @@ function look() {
 }
 
 function getQuestionList(){
-    alert(1)
     $.ajax({
         type: 'get',
         url: '/subject/list',

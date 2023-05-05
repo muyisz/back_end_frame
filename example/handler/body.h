@@ -23,6 +23,11 @@ struct ProgramData {
 };
 REGESTER(ProgramData, in, out)
 
+struct GetDetailReq {
+	int id;
+};
+REGESTER(GetDetailReq,id)
+
 struct SubjectReq {
 	string name;
 	string content;
@@ -51,11 +56,6 @@ struct GetSubjectListRes {
 	vector<SubjectListCell> subjectList;
 };
 REGESTER(GetSubjectListRes, code, message, subjectList);
-
-struct GetDetailReq {
-	int id;
-};
-REGESTER(GetDetailReq, id)
 
 struct SubjectDetail {
 	int id;

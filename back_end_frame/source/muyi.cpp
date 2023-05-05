@@ -3,7 +3,7 @@
 
 namespace muyi {
 
-	context::context(std::map<mstring, mstring>* reqHeader, mstring url, mstring data, mstring version, muyiController* controller) :reqHeader(reqHeader), url(url), reqData(data), version(version), controller(controller) {
+	context::context(std::map<mstring, mstring>* reqHeader, mstring url, mstring data, mstring version, muyiController* controller, std::map<mstring, mstring>* urlData):reqHeader(reqHeader), url(url), reqData(data), version(version), controller(controller),urlData(urlData) {
 		resHeader = new std::map<mstring, mstring>;
 	}
 
@@ -43,6 +43,11 @@ namespace muyi {
 	mstring context::GetHeader(mstring name) {
 		//todo
 		return (*reqHeader)[name];
+	}
+
+	mstring context::GetUrlData(mstring name) {
+		//todo
+		return (*urlData)[name];
 	}
 
 	void context::SetHeader(mstring name, mstring value) {

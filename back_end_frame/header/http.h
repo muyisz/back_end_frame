@@ -8,6 +8,7 @@ namespace muyi {
 
 	struct analysisHTTPData {
 		std::map<mstring, mstring>* Header;
+		std::map<mstring, mstring>* UrlData;
 		mstring Method;
 		mstring Url;
 		mstring Data;

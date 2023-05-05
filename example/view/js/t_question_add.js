@@ -91,8 +91,6 @@ function create() {
         }
     }
 
-    alert(JSON.stringify(postData))
-
     $.ajax({
         type: 'post',
         url: '/subject/create',

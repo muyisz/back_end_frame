@@ -55,6 +55,7 @@ namespace muyi {
 
 		returnTable<analysisHTTPData> analysisData;
 		analysisData.Data.Header = new std::map<mstring, mstring>;
+		analysisData.Data.UrlData = new std::map<mstring, mstring>;
 		returnTable<mstring> cutData;
 		std::map<mstring, mstring> header;
 
@@ -79,10 +80,36 @@ namespace muyi {
 			analysisData.Err = cutData.Err;
 			return analysisData;
 		}
+
 		analysisData.Data.Url = cutData.Data;
 
 		firstSeat = tailSeat + HTTPFieldIntervalSize;
 		sourceHTTP = sourceHTTP.Cut(firstSeat, sourceHTTP.size()).Data;
+
+		firstSeat = analysisData.Data.Url.find(HTTPUrlDataBegin);
+		if (firstSeat != mstring::maxSize()) {
+			cutData = analysisData.Data.Url.Cut(firstSeat + HTTPFieldIntervalSize, analysisData.Data.Url.size());
+			if (cutData.Err != nullptr) {
+				//todo ´òÓ¡ÈÕÖ¾
+				analysisData.Err = cutData.Err;
+				return analysisData;
+			}
+
+			analysisData.Data.Url = analysisData.Data.Url.Cut(0, firstSeat).Data;
+			mstring urlData = cutData.Data;
+			firstSeat = 0;
+			tailSeat = 0;
+
+			while (urlData.size() != 0) {
+				tailSeat = min(urlData.find(HTTPUrlDataInterval), urlData.size());
+				mstring cell = urlData.Cut(firstSeat, tailSeat).Data;
+				urlData = urlData.Cut(tailSeat + 1, urlData.size()).Data;
+
+				firstSeat = cell.find(HTTPUrlDataEqual);
+				(*analysisData.Data.UrlData)[cell.Cut(0, firstSeat).Data] = cell.Cut(firstSeat + 1, cell.size()).Data;
+
+			}
+		}
 		firstSeat = 0;
 
 		tailSeat = sourceHTTP.find(crlf);
@@ -143,7 +170,7 @@ namespace muyi {
 		}
 		//Remove spaces and line breaks in JSON
 		//RemoveSpace(HTTPData.Data.Data);
-		context sourceContext(HTTPData.Data.Header, HTTPData.Data.Url, HTTPData.Data.Data, HTTPData.Data.Version, controller);
+		context sourceContext(HTTPData.Data.Header, HTTPData.Data.Url, HTTPData.Data.Data, HTTPData.Data.Version, controller, HTTPData.Data.UrlData);
 
 		auto err = controller->DoRouter(HTTPData.Data.Method, HTTPData.Data.Url, &sourceContext);
 		if (err != nullptr) {
@@ -167,6 +194,7 @@ namespace muyi {
 
 		returnData.Data = creatHTTPData.Data;
 
+		delete HTTPData.Data.UrlData;
 		delete HTTPData.Data.Header;
 		return returnData;
 	}

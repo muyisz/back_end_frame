@@ -31,7 +31,7 @@ namespace muyi {
 
 	class context {
 	public:
-		context(std::map<mstring, mstring>* reqHeader, mstring url, mstring data, mstring version, muyiController* controller);
+		context(std::map<mstring, mstring>* reqHeader, mstring url, mstring data, mstring version, muyiController* controller, std::map<mstring, mstring>* urlData);
 		~context();
 
 		mstring GetCookie();
@@ -55,11 +55,13 @@ namespace muyi {
 		mstring GetVsersion();
 		mstring GetResData();
 		mstring GetReqData();
+		mstring GetUrlData(mstring name);
 		int GetStateCode();
 		std::map<mstring, mstring>* GetResHeader();
 		std::map<mstring, mstring>* GetReqHeader();
 
 	private:
+		std::map<mstring, mstring>* urlData;
 		std::map<mstring, mstring>* reqHeader;
 		std::map<mstring, mstring>* resHeader;
 		mstring version;

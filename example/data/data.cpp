@@ -228,6 +228,7 @@ muyi::returnTable<testPaper> dataBase::GetTestPaperByID(int id) {
 muyi::returnTable<vector<testPaper>> dataBase::GetAllTestPaper() {
 	muyi::returnTable<vector<testPaper>> returnData;
 	char* sql = new char[1024];
+	sprintf(sql, GetAllTestPaperFormat);
 	auto resData = query(sql);
 	delete[]sql;
 

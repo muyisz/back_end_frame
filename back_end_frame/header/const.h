@@ -30,6 +30,9 @@ namespace muyi {
 	const int HTTPFieldIntervalSize = 1;
 	const std::string HeaderInterval = ": ";
 	const int HeaderIntervalSize = 2;
+	const char HTTPUrlDataBegin = '?';
+	const char HTTPUrlDataInterval = '&';
+	const char HTTPUrlDataEqual = '=';
 	const std::string HTTPHeadFormat = "%s %d %s\r\n";
 	const int HTTPHeadSize = 100;
 	const std::string NotFindMessage = "HTTP/1.1 404 Not Found\r\n\r\n\r\n";
