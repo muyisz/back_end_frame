@@ -27,7 +27,7 @@ delBtn.onclick = del;
 lookBtn.onclick = look;
 
 function editExam(id){
-    window.location.href = '/subject/list_pages?id='+id
+    window.location.href = '/test_paper/detail_pages?id='+id
 }
 
 function getExamList(){

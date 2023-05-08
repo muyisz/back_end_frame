@@ -38,6 +38,10 @@ void GetChooseExample(muyi::context* c) {
 	c->HTML(HTTPStateOK, "t_choose_exam.html");
 }
 
+void GetTestPaperTestPages(muyi::context* c) {
+	c->HTML(HTTPStateOK, "t_exam_test.html");
+}
+
 void PostLogin(muyi::context* c) {
 	UserReq userInfo;
 	Res res;
@@ -246,6 +250,34 @@ void GetTestPaperList(muyi::context* c) {
 			cell.creater = testPaperListData.Data[i].creater;
 			res.testPaperList.push_back(cell);
 		}
+	}
+	c->JSON(HTTPStateOK, res);
+}
+
+void SubmitTestPaper(muyi::context* c) {
+	SubmitTestPaperReq req;
+	SubmitTestPaperRes res;
+
+	toStruct(req, c->GetReqData());
+	vector<EvaluationTestPaperCell> subjectList;
+
+	for (int i = 0; i < req.subjectList.size(); i++) {
+		EvaluationTestPaperCell cell;
+		cell.id = req.subjectList[i].id;
+		cell.anwser = req.subjectList[i].anwser;
+		subjectList.push_back(cell);
+	}
+	auto scoreData = EvaluationTestPaper(subjectList);
+
+	if (scoreData.Err != nullptr) {
+		res.code = -1;
+		res.message = scoreData.Err->GetMsg();
+		delete scoreData.Err;
+	}
+	else {
+		res.code = 0;
+		res.message = "";
+		res.score = scoreData.Data;
 	}
 	c->JSON(HTTPStateOK, res);
 }

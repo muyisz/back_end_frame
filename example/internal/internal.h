@@ -13,7 +13,5 @@ muyi::returnTable<InternalSubjectDetail> GetSubjectDetailInternal(int id);
 muyi::error* CreateTestPaper(vector<int> subjectList, string creater, int facilityValue);
 muyi::returnTable<InternalTestPaperDetail> TestPaperDetail(int id);
 muyi::returnTable<vector<InternalTestPaper>> GetAllTestPaper();
-bool creatFile(muyi::mstring name,muyi::mstring content);
-muyi::error* compileCppFile(muyi::mstring name);
-muyi::error* runCode(muyi::mstring exeName,muyi::mstring inName,muyi::mstring outName);
 muyi::returnTable<muyi::mstring>GetFileContent(muyi::mstring name);
+muyi::returnTable<int>EvaluationTestPaper(vector<EvaluationTestPaperCell> subjectList);

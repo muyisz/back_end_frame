@@ -13,6 +13,7 @@ void InitRouter(muyi::muyiController& r) {
 	r.GET("/test_paper/list_pages",GetTestPaperListPages);
 	r.GET("/test_paper/detail_pages", GetTestPaperDetailPages);
 	r.GET("/test_paper/create_pages",CreateTestPaperPages);
+	r.GET("/test_paper/test_pages", GetTestPaperTestPages);
 	/////////////////////////////////////////////////////////////////////////////////////////
 	r.GET("/subject/list", GetSubjectList);
 	r.GET("/subject/detail", GetSubjectDetail);
@@ -23,4 +24,5 @@ void InitRouter(muyi::muyiController& r) {
 	r.POST("/regester", PostRegester);
 	r.POST("/subject/create", PostAddSubject);
 	r.POST("/test_paper/create", PostCreateTestPaper);
+	r.POST("/test_paper/submit", SubmitTestPaper);
 }

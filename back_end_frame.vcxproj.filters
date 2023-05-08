@@ -132,5 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="example\config\table.sql" />
+    <None Include="example\view\pages\t_exam_test.html" />
+    <None Include="example\view\js\t_exam_test.js" />
   </ItemGroup>
 </Project>

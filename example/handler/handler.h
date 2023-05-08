@@ -10,6 +10,7 @@ void GetTestPaperListPages(muyi::context* c);
 void GetTestPaperDetailPages(muyi::context* c);
 void CreateTestPaperPages(muyi::context* c);
 void GetChooseExample(muyi::context* c);
+void GetTestPaperTestPages(muyi::context* c);
 
 void GetSubjectList(muyi::context* c);
 void GetSubjectDetail(muyi::context* c);
@@ -20,3 +21,4 @@ void PostLogin(muyi::context* c);
 void PostRegester(muyi::context* c);
 void PostAddSubject(muyi::context* c);
 void PostCreateTestPaper(muyi::context* c);
+void SubmitTestPaper(muyi::context* c);

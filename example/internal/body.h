@@ -36,3 +36,8 @@ struct InternalTestPaper {
 	string creater;
 	int facilityValue;
 };
+
+struct EvaluationTestPaperCell {
+	int id;
+	string anwser;
+};

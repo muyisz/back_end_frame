@@ -26,7 +26,7 @@ REGESTER(ProgramData, in, out)
 struct GetDetailReq {
 	int id;
 };
-REGESTER(GetDetailReq,id)
+REGESTER(GetDetailReq, id)
 
 struct SubjectReq {
 	string name;
@@ -111,3 +111,21 @@ struct GetTestPaperListRes {
 	vector<GetTestPaperListCell> testPaperList;
 };
 REGESTER(GetTestPaperListRes, code, message, testPaperList)
+
+struct SubmitTestPaperCell {
+	int id;
+	string anwser;
+};
+REGESTER(SubmitTestPaperCell, id, anwser)
+
+struct SubmitTestPaperReq {
+	vector<SubmitTestPaperCell>  subjectList;
+};
+REGESTER(SubmitTestPaperReq, subjectList)
+
+struct SubmitTestPaperRes {
+	int code;
+	string message;
+	int score;
+};
+REGESTER(SubmitTestPaperRes, code, message, score)

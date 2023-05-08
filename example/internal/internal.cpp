@@ -148,7 +148,7 @@ muyi::returnTable<InternalTestPaperDetail> TestPaperDetail(int id) {
 	}
 	returnData.Data.id = testPaperData.Data.id;
 	returnData.Data.facilityValue = testPaperData.Data.facilityValue;
-	returnData.Data.creater= testPaperData.Data.creater;
+	returnData.Data.creater = testPaperData.Data.creater;
 
 	auto subjectIDList = Spilt(testPaperData.Data.subjectList, ",");
 	for (int i = 0; i < subjectIDList.size(); i++) {
@@ -199,9 +199,8 @@ muyi::returnTable<vector<InternalTestPaper>> GetAllTestPaper() {
 }
 
 bool creatFile(muyi::mstring name, muyi::mstring content) {
-	string filename(name.c_str());
 	fstream outputFstream;
-	outputFstream.open(filename, std::ios_base::out);
+	outputFstream.open(name.GetSourceString(), std::ios_base::out);
 	if (!outputFstream) {
 		return false;
 	}
@@ -229,6 +228,75 @@ muyi::error* runCode(muyi::mstring exeName, muyi::mstring inName, muyi::mstring 
 
 muyi::returnTable<muyi::mstring>GetFileContent(muyi::mstring name) {
 	muyi::returnTable<muyi::mstring> returnData;
+	fstream outputFstream;
+	outputFstream.open(name.GetSourceString(), std::ios_base::out);
+	if (!outputFstream) {
+		returnData.Err = muyi::error::NewError(GetFileContentFailed);
+		return returnData;
+	}
+	string result;
+	outputFstream >> result;
+	returnData.Data = result;
+	return returnData;
+}
 
+bool EvaluationSubjectProgram(int id, string anwser) {
+	auto dataData = dataBase::instence()->GetProgramData(id);
+	if (dataData.Err != nullptr) {
+		delete dataData.Err;
+		return false;
+	}
+	if (!creatFile(CodeFileName, anwser)) {
+		return false;
+	}
+	if (!creatFile(InFileName, dataData.Data[0].dataIn)) {
+		return false;
+	}
+	if (!creatFile(OutFileName, dataData.Data[0].dataOut)) {
+		return false;
+	}
+
+	auto err = compileCppFile(CodeFileName);
+	if (err != nullptr) {
+		delete err;
+		return false;
+	}
+	err = runCode(RunFileName, InFileName, OutFileName);
+	if (err != nullptr) {
+		delete err;
+		return false;
+	}
+	auto result = GetFileContent(OutFileName);
+	if (result.Err != nullptr) {
+		delete result.Err;
+		return false;
+	}
+	return result.Data == dataData.Data[0].dataOut;
+}
+
+muyi::returnTable<int> EvaluationTestPaper(vector<EvaluationTestPaperCell> subjectList) {
+	muyi::returnTable<int> returnData;
+
+	int score = 0;
+	for (int i = 0; i < subjectList.size(); i++) {
+		auto cellData = dataBase::instence()->GetSubjectByID(subjectList[i].id);
+		if (cellData.Err != nullptr) {
+			//todo ¥Ú”°»’÷æ
+			delete cellData.Err;
+			continue;
+		}
+		switch (cellData.Data.type) {
+		case SubjectProgram:
+			if (EvaluationSubjectProgram(subjectList[i].id, subjectList[i].anwser)) {
+				score++;
+			}
+			break;
+		default:
+			if (subjectList[i].anwser == cellData.Data.answer) {
+				score++;
+			}
+		}
+	}
+	returnData.Data = score * subjectList.size() / FullMarks;
 	return returnData;
 }
