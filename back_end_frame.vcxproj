@@ -208,8 +208,74 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="example\config\table.sql" />
+    <None Include="example\view\css\global.css" />
+    <None Include="example\view\css\global.css.map" />
+    <None Include="example\view\css\login.css" />
+    <None Include="example\view\css\login.css.map" />
+    <None Include="example\view\css\rank.css" />
+    <None Include="example\view\css\rank.css.map" />
+    <None Include="example\view\css\register.css" />
+    <None Include="example\view\css\register.css.map" />
+    <None Include="example\view\css\t_choose_exam.css" />
+    <None Include="example\view\css\t_choose_exam.css.map" />
+    <None Include="example\view\css\t_exam_add.css" />
+    <None Include="example\view\css\t_exam_add.css.map" />
+    <None Include="example\view\css\t_exam_list.css" />
+    <None Include="example\view\css\t_exam_list.css.map" />
+    <None Include="example\view\css\t_exam_probe.css" />
+    <None Include="example\view\css\t_exam_probe.css.map" />
+    <None Include="example\view\css\t_question_add.css" />
+    <None Include="example\view\css\t_question_add.css.map" />
+    <None Include="example\view\css\t_question_detailed.css" />
+    <None Include="example\view\css\t_question_detailed.css.map" />
+    <None Include="example\view\css\t_question_list.css" />
+    <None Include="example\view\css\t_question_list.css.map" />
+    <None Include="example\view\font\demo.css" />
+    <None Include="example\view\font\demo_index.html" />
+    <None Include="example\view\font\iconfont.css" />
+    <None Include="example\view\font\iconfont.js" />
+    <None Include="example\view\font\iconfont.json" />
+    <None Include="example\view\font\iconfont.woff" />
+    <None Include="example\view\font\iconfont.woff2" />
+    <None Include="example\view\js\jquery-3.1.1.min.js" />
+    <None Include="example\view\js\login.js" />
+    <None Include="example\view\js\rank.js" />
+    <None Include="example\view\js\register.js" />
+    <None Include="example\view\js\t_choose_exam.js" />
+    <None Include="example\view\js\t_exam_add.js" />
+    <None Include="example\view\js\t_exam_list.js" />
+    <None Include="example\view\js\t_exam_probe.js" />
     <None Include="example\view\js\t_exam_test.js" />
+    <None Include="example\view\js\t_question_add.js" />
+    <None Include="example\view\js\t_question_list.js" />
+    <None Include="example\view\pages\login.html" />
+    <None Include="example\view\pages\rank.html" />
+    <None Include="example\view\pages\register.html" />
+    <None Include="example\view\pages\t_choose_exam.html" />
+    <None Include="example\view\pages\t_exam_add.html" />
+    <None Include="example\view\pages\t_exam_list.html" />
+    <None Include="example\view\pages\t_exam_probe.html" />
     <None Include="example\view\pages\t_exam_test.html" />
+    <None Include="example\view\pages\t_question_add.html" />
+    <None Include="example\view\pages\t_question_detailed.html" />
+    <None Include="example\view\pages\t_question_list.html" />
+    <None Include="example\view\sass\global.scss" />
+    <None Include="example\view\sass\login.scss" />
+    <None Include="example\view\sass\rank.scss" />
+    <None Include="example\view\sass\register.scss" />
+    <None Include="example\view\sass\t_choose_exam.scss" />
+    <None Include="example\view\sass\t_exam_add.scss" />
+    <None Include="example\view\sass\t_exam_list.scss" />
+    <None Include="example\view\sass\t_exam_probe.scss" />
+    <None Include="example\view\sass\t_question_add.scss" />
+    <None Include="example\view\sass\t_question_detailed.scss" />
+    <None Include="example\view\sass\t_question_list.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="example\view\font\iconfont.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="example\view\images\icon.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

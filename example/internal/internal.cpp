@@ -199,6 +199,7 @@ muyi::returnTable<vector<InternalTestPaper>> GetAllTestPaper() {
 }
 
 bool creatFile(muyi::mstring name, muyi::mstring content) {
+	printf("%s", content.c_str());
 	fstream outputFstream;
 	outputFstream.open(name.GetSourceString(), std::ios_base::out);
 	if (!outputFstream) {
