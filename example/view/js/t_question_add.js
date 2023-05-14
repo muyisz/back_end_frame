@@ -2,6 +2,10 @@ let pro = document.querySelector(".program_question");
 let obj = document.querySelector(".objective_question");
 let cho = document.querySelector(".choice_question");
 
+SubjectCompletion = 1;
+SubjectChoice = 2;
+SubjectProgram = 3;
+
 // 创建按钮
 let creBtn = document.querySelector(".creBtn");
 
@@ -56,13 +60,13 @@ function create() {
     }
     var postData
 
-    if(type==3){
-        let test={
+    if (type == 3) {
+        let test = {
             in: $('#test_in').val(),
             out: $('#test_out').val(),
         }
 
-        let data={
+        let data = {
             in: $('#data_in').val(),
             out: $('#data_out').val(),
         }
@@ -75,21 +79,22 @@ function create() {
             data: [data],
         }
 
-    }else if(type==2){
+    } else if (type == 2) {
         postData = {
             name: $('#name').val(),
             content: $('#content').val(),
             type: type,
-            answer:$('#anwser2').val()
+            answer: $('#answer2').val() + "-" + $('#choose_a').val() + "-" + $('#choose_b').val() + "-" + $('#choose_c').val() + "-" + $('#choose_d').val()
         }
-    }else{
+    } else {
         postData = {
             name: $('#name').val(),
             content: $('#content').val(),
             type: type,
-            answer:$('#anwser1').val()
+            answer: $('#anwser1').val()
         }
     }
+
 
     $.ajax({
         type: 'post',
@@ -97,10 +102,10 @@ function create() {
         dataType: 'json',
         data: JSON.stringify(postData),
         success: function (res) {
-            if(res.code!=0){
+            if (res.code != 0) {
                 alert(res.message)
-            }else{
-               window.location.href = '/subject/list_pages'
+            } else {
+                window.location.href = '/subject/list_pages'
             }
         }
     })

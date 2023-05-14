@@ -199,7 +199,6 @@ muyi::returnTable<vector<InternalTestPaper>> GetAllTestPaper() {
 }
 
 bool creatFile(muyi::mstring name, muyi::mstring content) {
-	printf("%s", content.c_str());
 	fstream outputFstream;
 	outputFstream.open(name.GetSourceString(), std::ios_base::out);
 	if (!outputFstream) {
@@ -213,7 +212,7 @@ bool creatFile(muyi::mstring name, muyi::mstring content) {
 
 muyi::error* compileCppFile(muyi::mstring name) {
 	char* order = new char[1024];
-	sprintf(order, CompileCppFileOrder, name);
+	sprintf(order, CompileCppFileOrder, name.c_str());
 	system(order);
 
 	return nullptr;
@@ -221,7 +220,7 @@ muyi::error* compileCppFile(muyi::mstring name) {
 
 muyi::error* runCode(muyi::mstring exeName, muyi::mstring inName, muyi::mstring outName) {
 	char* order = new char[1024];
-	sprintf(order, StartRunOrder, exeName, inName, outName);
+	sprintf(order, StartRunOrder, exeName.c_str(), inName.c_str(), outName.c_str());
 	system(order);
 
 	return nullptr;
@@ -230,7 +229,7 @@ muyi::error* runCode(muyi::mstring exeName, muyi::mstring inName, muyi::mstring 
 muyi::returnTable<muyi::mstring>GetFileContent(muyi::mstring name) {
 	muyi::returnTable<muyi::mstring> returnData;
 	fstream outputFstream;
-	outputFstream.open(name.GetSourceString(), std::ios_base::out);
+	outputFstream.open(name.GetSourceString(), std::ios::in | std::ios::binary);
 	if (!outputFstream) {
 		returnData.Err = muyi::error::NewError(GetFileContentFailed);
 		return returnData;
@@ -247,7 +246,13 @@ bool EvaluationSubjectProgram(int id, string anwser) {
 		delete dataData.Err;
 		return false;
 	}
-	if (!creatFile(CodeFileName, anwser)) {
+	if (dataData.Data.empty()) {
+		return true;
+	}
+
+	muyi::mstring mAnwser = muyi::mstring(anwser);
+	mAnwser.replace("\\n", "\n");
+	if (!creatFile(CodeFileName, mAnwser.GetSourceString())) {
 		return false;
 	}
 	if (!creatFile(InFileName, dataData.Data[0].dataIn)) {
@@ -272,7 +277,15 @@ bool EvaluationSubjectProgram(int id, string anwser) {
 		delete result.Err;
 		return false;
 	}
-	return result.Data == dataData.Data[0].dataOut;
+	return result.Data.GetSourceString() == dataData.Data[0].dataOut;
+}
+
+bool EvaluationChoiceProgram(muyi::mstring anwser, muyi::mstring rightAnwser) {
+	auto spiltData = Spilt(rightAnwser.GetSourceString(), SubjectChoiceInterval);
+	if (!spiltData[0].compare(anwser.GetSourceString())) {
+		return true;
+	}
+	return false;
 }
 
 muyi::returnTable<int> EvaluationTestPaper(vector<EvaluationTestPaperCell> subjectList) {
@@ -292,12 +305,17 @@ muyi::returnTable<int> EvaluationTestPaper(vector<EvaluationTestPaperCell> subje
 				score++;
 			}
 			break;
+		case SubjectChoice:
+			if (EvaluationChoiceProgram(subjectList[i].anwser, cellData.Data.answer)) {
+				score++;
+			}
+			break;
 		default:
 			if (subjectList[i].anwser == cellData.Data.answer) {
 				score++;
 			}
 		}
 	}
-	returnData.Data = score * subjectList.size() / FullMarks;
+	returnData.Data = double(score) / double(subjectList.size()) * FullMarks;
 	return returnData;
 }

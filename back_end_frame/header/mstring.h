@@ -43,6 +43,7 @@ namespace muyi {
 		unsigned int findFrom(int seat, const char* data);
 		unsigned int findFrom(int seat, std::string data);
 		unsigned int findFrom(int seat, char data);
+		void replace(mstring oldCell, mstring newCell);
 		unsigned int find(mstring data);
 		unsigned int find(const char* data);
 		unsigned int find(std::string data);

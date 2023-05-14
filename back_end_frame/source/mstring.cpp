@@ -232,5 +232,15 @@ namespace muyi {
 		}
 		return findData.find(data) + seat;
 	}
+	void mstring::replace(mstring oldCell, mstring newCell) {
+		int seat = this->find(oldCell);
+		while (seat != mstring::maxSize()) {
+			auto headData = this->Cut(0, seat);
+
+			auto tailData = this->Cut(seat + oldCell.size(), size());
+			this->sourceString = headData.Data.GetSourceString() + newCell.GetSourceString() + tailData.Data.GetSourceString();
+			seat = find(oldCell);
+		}
+	}
 
 }

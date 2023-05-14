@@ -12,3 +12,4 @@ const char* RunFileName = "a.exe";
 const char* CompileCppFileOrder = "g++ %s";
 const char* StartRunOrder = "%s < %s > %s";
 const int FullMarks = 100;
+const char* SubjectChoiceInterval = "-";

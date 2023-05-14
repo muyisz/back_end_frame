@@ -19,7 +19,7 @@ function boxShow() {
             } else {
                 var data = ""
                 for (i = 0; i < res.subjectList.length; i++) {
-                    var cell = '<tr><td class="question"><p>' + res.subjectList[i].name + '</p></td><td class="difficulty">L1</td><td class="choose"><button onclick=choice(' + res.subjectList[i].id + ',"' + res.subjectList[i].name + '","' + res.subjectList[i].anwser + '")>选择</button></td></tr>'
+                    var cell = '<tr><td class="question"><p>' + res.subjectList[i].name + '</p></td><td class="difficulty">L1</td><td class="choose"><button onclick=choice(' + res.subjectList[i].id + ',"' + res.subjectList[i].name + '","' + res.subjectList[i].answer + '")>选择</button></td></tr>'
                     data += cell
                 }
                 document.getElementById("subjectList").innerHTML = data
@@ -32,11 +32,12 @@ function boxShow() {
 addBtn.onclick = boxShow;
 
 // 第一个“选择” 按钮  手动生成
-function choice(id, name, anwser) {
+function choice(id, name, answer) {
+    alert(id+name+answer)
     subjectList[subjectList.length] = {
         id: id,
         name: name,
-        anwser: anwser,
+        answer: answer,
     }
     showSubjectList()
 }
@@ -44,7 +45,7 @@ function choice(id, name, anwser) {
 function showSubjectList() {
     var data = ""
     for (i = 0; i < subjectList.length; i++) {
-        var cell = '<div class="exam_item"><div class="question">题目：<textarea name="question" id="" cols="30" rows="1">' + subjectList[i].name + '</textarea></div><div class="answer">答案：<textarea name="answer" id="" cols="30" rows="1">' + subjectList[i].anwser + '</textarea></div></div>'
+        var cell = '<div class="exam_item"><div class="question">题目：<textarea name="question" id="" cols="30" rows="1">' + subjectList[i].name + '</textarea></div><div class="answer">答案：<textarea name="answer" id="" cols="30" rows="1">' + subjectList[i].answer + '</textarea></div></div>'
         data += cell
     }
     document.getElementById("chooseSubjectList").innerHTML = data
